@@ -1,0 +1,13 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLState</id><coordinates><x>530</x><y>150</y><w>100</w><h>40</h></coordinates><panel_attributes>Intr: UART RX
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLState</id><coordinates><x>520</x><y>340</y><w>120</w><h>60</h></coordinates><panel_attributes>Decodifica mensaje
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLState</id><coordinates><x>520</x><y>460</y><w>120</w><h>60</h></coordinates><panel_attributes>Actualiza MEF
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>390</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>510</x><y>600</y><w>140</w><h>140</h></coordinates><panel_attributes>bg=green
+type=decision
+¿Es necesario
+enviar mensaje?</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>510</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLState</id><coordinates><x>530</x><y>830</y><w>100</w><h>40</h></coordinates><panel_attributes>Intr: UART TX
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>730</y><w>40</w><h>120</h></coordinates><panel_attributes>lt=&lt;-
+Si</panel_attributes><additional_attributes>10;100;10;10</additional_attributes></element><element><id>UMLState</id><coordinates><x>530</x><y>270</y><w>100</w><h>40</h></coordinates><panel_attributes>Intr: UART RX
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>180</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element></diagram>
