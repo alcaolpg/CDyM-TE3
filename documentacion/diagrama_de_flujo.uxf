@@ -1,13 +1,36 @@
-<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLState</id><coordinates><x>530</x><y>150</y><w>100</w><h>40</h></coordinates><panel_attributes>Intr: UART RX
-bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLState</id><coordinates><x>520</x><y>340</y><w>120</w><h>60</h></coordinates><panel_attributes>Decodifica mensaje
-bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLState</id><coordinates><x>520</x><y>460</y><w>120</w><h>60</h></coordinates><panel_attributes>Actualiza MEF
-bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>390</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=&lt;-
-</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>510</x><y>600</y><w>140</w><h>140</h></coordinates><panel_attributes>bg=green
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLState</id><coordinates><x>520</x><y>460</y><w>100</w><h>40</h></coordinates><panel_attributes>Intr: UART RX
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLState</id><coordinates><x>510</x><y>530</y><w>120</w><h>60</h></coordinates><panel_attributes>Decodifica mensaje
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLState</id><coordinates><x>510</x><y>620</y><w>120</w><h>60</h></coordinates><panel_attributes>Actualiza MEF
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>580</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element><element><id>UMLState</id><coordinates><x>520</x><y>980</y><w>100</w><h>40</h></coordinates><panel_attributes>Intr: UART TX
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>920</y><w>40</w><h>80</h></coordinates><panel_attributes>lt=&lt;-
+Si</panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>490</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>500</x><y>270</y><w>140</w><h>140</h></coordinates><panel_attributes>bg=green
+type=decision
+¿Ocurrió interrupcion
+de recepcion?</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLState</id><coordinates><x>520</x><y>0</y><w>100</w><h>40</h></coordinates><panel_attributes>Intr: UART TX
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLState</id><coordinates><x>510</x><y>70</y><w>120</w><h>60</h></coordinates><panel_attributes>Enviar
+mensaje bienvenida
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLSpecialState</id><coordinates><x>500</x><y>790</y><w>140</w><h>140</h></coordinates><panel_attributes>bg=green
 type=decision
 ¿Es necesario
-enviar mensaje?</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>510</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=&lt;-
-</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLState</id><coordinates><x>530</x><y>830</y><w>100</w><h>40</h></coordinates><panel_attributes>Intr: UART TX
-bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>730</y><w>40</w><h>120</h></coordinates><panel_attributes>lt=&lt;-
-Si</panel_attributes><additional_attributes>10;100;10;10</additional_attributes></element><element><id>UMLState</id><coordinates><x>530</x><y>270</y><w>100</w><h>40</h></coordinates><panel_attributes>Intr: UART RX
-bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>180</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=&lt;-
-</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element></diagram>
+enviar 
+informacion?</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>400</y><w>40</w><h>80</h></coordinates><panel_attributes>lt=&lt;-
+Si</panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element><element><id>UMLState</id><coordinates><x>510</x><y>170</y><w>120</w><h>60</h></coordinates><panel_attributes>Esperar comando
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>620</x><y>190</y><w>150</w><h>170</h></coordinates><panel_attributes>lt=&lt;-
+No</panel_attributes><additional_attributes>10;10;120;10;120;150;20;150</additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>220</y><w>30</w><h>70</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>200</y><w>90</w><h>680</h></coordinates><panel_attributes>lt=&lt;-
+No</panel_attributes><additional_attributes>70;10;10;10;10;660;60;660</additional_attributes></element><element><id>UMLState</id><coordinates><x>510</x><y>1050</y><w>120</w><h>60</h></coordinates><panel_attributes>Envia informacion
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>1010</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>410</x><y>180</y><w>130</w><h>1000</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>100;10;10;10;10;980;110;980</additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>120</y><w>30</w><h>70</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>30</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element><element><id>UMLState</id><coordinates><x>520</x><y>710</y><w>100</w><h>40</h></coordinates><panel_attributes>FIN 
+Intr: UART RX
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>670</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>740</y><w>30</w><h>70</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>UMLState</id><coordinates><x>520</x><y>1140</y><w>100</w><h>40</h></coordinates><panel_attributes>FIN 
+Intr: UART TX
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLState</id><coordinates><x>750</x><y>1020</y><w>120</w><h>60</h></coordinates><panel_attributes>Envia informacion
+bg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>560</x><y>1100</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
+</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element></diagram>
