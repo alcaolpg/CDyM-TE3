@@ -1,0 +1,22 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLUseCase</id><coordinates><x>590</x><y>560</y><w>160</w><h>160</h></coordinates><panel_attributes>*2*
+interpretar</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>1010</x><y>180</y><w>160</w><h>160</h></coordinates><panel_attributes>*4*
+ON</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>1110</x><y>560</y><w>160</w><h>160</h></coordinates><panel_attributes>*5*
+OFF</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>1030</x><y>940</y><w>160</w><h>160</h></coordinates><panel_attributes>*6*
+FREQ</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>590</x><y>1010</y><w>160</w><h>160</h></coordinates><panel_attributes>*7*
+comando_invalido</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>590</x><y>110</y><w>160</w><h>160</h></coordinates><panel_attributes>*3*
+RST</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>660</x><y>260</y><w>80</w><h>320</h></coordinates><panel_attributes>msg=RST
+lt=-&gt;&gt;
+</panel_attributes><additional_attributes>10;300;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>660</x><y>710</y><w>30</w><h>320</h></coordinates><panel_attributes>lt=-&gt;&gt;</panel_attributes><additional_attributes>10;10;10;300</additional_attributes></element><element><id>Relation</id><coordinates><x>700</x><y>700</y><w>430</w><h>260</h></coordinates><panel_attributes>100 &lt;= msg(int) &lt;=10000 
+lt=-&gt;&gt;</panel_attributes><additional_attributes>10;10;120;140;270;140;410;210;410;240</additional_attributes></element><element><id>Relation</id><coordinates><x>740</x><y>620</y><w>390</w><h>40</h></coordinates><panel_attributes>lt=-&gt;&gt;
+msg=OFF</panel_attributes><additional_attributes>10;20;370;20</additional_attributes></element><element><id>Relation</id><coordinates><x>700</x><y>330</y><w>410</w><h>260</h></coordinates><panel_attributes>lt=-&gt;&gt;
+msg=ON</panel_attributes><additional_attributes>10;240;120;90;260;90;390;40;390;10</additional_attributes></element><element><id>Relation</id><coordinates><x>280</x><y>180</y><w>330</w><h>410</h></coordinates><panel_attributes>Exito
+lt=&lt;&lt;-</panel_attributes><additional_attributes>10;390;280;10;310;10</additional_attributes></element><element><id>Relation</id><coordinates><x>250</x><y>50</y><w>860</w><h>530</h></coordinates><panel_attributes>Exito
+lt=&lt;&lt;-</panel_attributes><additional_attributes>10;510;10;460;330;20;740;20;840;110;840;130</additional_attributes></element><element><id>Relation</id><coordinates><x>230</x><y>0</y><w>1100</w><h>660</h></coordinates><panel_attributes>Exito
+lt=&lt;&lt;-
+</panel_attributes><additional_attributes>10;560;10;480;340;20;810;20;1080;250;1080;640;1040;640</additional_attributes></element><element><id>Relation</id><coordinates><x>280</x><y>700</y><w>330</w><h>410</h></coordinates><panel_attributes>lt=&lt;&lt;-
+Exito</panel_attributes><additional_attributes>10;10;280;390;310;390</additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>170</x><y>560</y><w>160</w><h>160</h></coordinates><panel_attributes>*1*
+captar</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>620</y><w>290</w><h>40</h></coordinates><panel_attributes>caracter_detectado= \r
+lt=-&gt;&gt;</panel_attributes><additional_attributes>10;20;270;20</additional_attributes></element><element><id>Relation</id><coordinates><x>240</x><y>710</y><w>890</w><h>570</h></coordinates><panel_attributes>Exito
+lt=-&gt;&gt;
+</panel_attributes><additional_attributes>870;390;870;410;690;540;320;540;10;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>0</x><y>590</y><w>210</w><h>120</h></coordinates><panel_attributes>caracter_detectado != \r
+lt=-&gt;&gt;</panel_attributes><additional_attributes>180;10;10;10;10;100;190;100</additional_attributes></element></diagram>
