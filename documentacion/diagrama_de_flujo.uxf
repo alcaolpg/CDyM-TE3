@@ -15,8 +15,8 @@ type=decision
 ¿Es necesario enviar
 informacion?</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>348</y><w>40</w><h>80</h></coordinates><panel_attributes>lt=&lt;-
 Si</panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element><element><id>UMLState</id><coordinates><x>580</x><y>118</y><w>120</w><h>60</h></coordinates><panel_attributes>Esperar comando
-bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>138</y><w>110</w><h>170</h></coordinates><panel_attributes>lt=&lt;-
-No</panel_attributes><additional_attributes>10;10;80;10;80;150;20;150</additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>168</y><w>30</w><h>70</h></coordinates><panel_attributes>lt=&lt;-
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>278</y><w>110</w><h>410</h></coordinates><panel_attributes>lt=&lt;-
+No</panel_attributes><additional_attributes>10;390;80;390;80;10;20;10</additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>168</y><w>30</w><h>70</h></coordinates><panel_attributes>lt=&lt;-
 </panel_attributes><additional_attributes>10;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>510</x><y>148</y><w>90</w><h>680</h></coordinates><panel_attributes>lt=&lt;-
 No</panel_attributes><additional_attributes>70;10;10;10;10;660;60;660</additional_attributes></element><element><id>UMLState</id><coordinates><x>890</x><y>778</y><w>120</w><h>60</h></coordinates><panel_attributes>Enviar informacion
 bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>850</x><y>788</y><w>60</w><h>40</h></coordinates><panel_attributes>lt=&lt;-
