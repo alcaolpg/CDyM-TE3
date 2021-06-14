@@ -55,7 +55,7 @@ void send_buffer_content(void)
 {
 	static unsigned int i = 0;
 	
-	if ((buffer[i] != "\r") && (i < buffer_size))
+	if ((buffer[i] != "\0") && (i < buffer_size))
 	{
 		send_data(buffer[i]);
 		i++;
@@ -63,7 +63,7 @@ void send_buffer_content(void)
 	else
 	{
 		send_data("\r");
-		send_data("\0");
+		send_data("\n");
 		i = 0;
 		done_sending();
 	}
