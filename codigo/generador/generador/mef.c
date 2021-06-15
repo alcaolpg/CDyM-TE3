@@ -1,9 +1,10 @@
 #include "string.h"
 
+#define tam_maximo_comando 32
+
 unsigned char estado = 1;
 char frecuencia_actual[5] = "6435";
 char frecuencia_nueva[5] = "6435";
-const char tam_maximo_comando = 32;
 char comando_detectado[tam_maximo_comando];
 char indice_lectura = 0;
 
