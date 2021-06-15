@@ -228,9 +228,9 @@ void TIMER1_reset_module(){
  15c:	08 95       	ret
 
 0000015e <TIMER1_set_module>:
-	TCCR1B=(1<<WGM12)|(1<<CS12)|(1<<CS10); //Modo CTC prescaler 1024
 }
 */
+
 //funciones publicas
 void TIMER1_set_module(){
 	TIMER1_reset_module();

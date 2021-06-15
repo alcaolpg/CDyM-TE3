@@ -36,6 +36,7 @@ void setModeCTCPreescaler1024(){
 	TCCR1B=(1<<WGM12)|(1<<CS12)|(1<<CS10); //Modo CTC prescaler 1024
 }
 */
+
 //funciones publicas
 void TIMER1_set_module(){
 	TIMER1_reset_module();
