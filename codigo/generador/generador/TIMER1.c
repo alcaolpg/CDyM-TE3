@@ -16,6 +16,7 @@ void setModeCTCnoClock(){
 void setModeCTCnoPreescaler(){
 	TCCR1B=(1<<WGM12)|(1<<CS10); //Modo CTC no prescaler
 }
+/*
 void setModeCTCPreescaler8(){
 	TCCR1B=(1<<WGM12)|(1<<CS11); //Modo CTC prescaler 8
 }
@@ -28,6 +29,7 @@ void setModeCTCPreescaler256(){
 void setModeCTCPreescaler1024(){
 	TCCR1B=(1<<WGM12)|(1<<CS12)|(1<<CS10); //Modo CTC prescaler 1024
 }
+*/
 void setTopeDelContador(uint16_t frecuenciaDeseada){
 	resetCounterOn= (F_CPU/(2*1*frecuenciaDeseada))-1;
 }
