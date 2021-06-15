@@ -24,9 +24,7 @@ int main(void)
 		
 		sprintf(text, "%d", fr++);
 		TIMER1_set_frequency(text);
-		_delay_ms(100);
-	//	TIMER1_set_off();
-	//	
+		_delay_ms(100);	
     }
 	
 }

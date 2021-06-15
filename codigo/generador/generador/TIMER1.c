@@ -16,6 +16,12 @@ void setModeCTCnoClock(){
 void setModeCTCnoPreescaler(){
 	TCCR1B=(1<<WGM12)|(1<<CS10); //Modo CTC no prescaler
 }
+void setTopeDelContador(uint16_t frecuenciaDeseada){
+	resetCounterOn= (F_CPU/(2*1*frecuenciaDeseada))-1;
+}
+uint8_t isRangoAdmitido(uint16_t frequency){
+	return (F_min<frequency)&&(frequency<F_max);
+}
 /*
 void setModeCTCPreescaler8(){
 	TCCR1B=(1<<WGM12)|(1<<CS11); //Modo CTC prescaler 8
@@ -30,22 +36,19 @@ void setModeCTCPreescaler1024(){
 	TCCR1B=(1<<WGM12)|(1<<CS12)|(1<<CS10); //Modo CTC prescaler 1024
 }
 */
-void setTopeDelContador(uint16_t frecuenciaDeseada){
-	resetCounterOn= (F_CPU/(2*1*frecuenciaDeseada))-1;
-}
-
-
 //funciones publicas
 void TIMER1_set_module(){
 	TIMER1_reset_module();
 	setOutPB1();
 	setModeTogle();
 	} 
-void TIMER1_set_frequency(char frequencyStr[] ){
+uint8_t  TIMER1_set_frequency(char frequencyStr[] ){
 	uint16_t frequency=atoi(frequencyStr);
-	if ((100<frequency)&&(frequency<10000)){
+	if (isRangoAdmitido(frequency)){
 		setTopeDelContador(frequency);
-	}	
+		return 1;
+	}
+	return 0;	
 }
 void TIMER1_set_on(){	
 	setModeCTCnoPreescaler();
