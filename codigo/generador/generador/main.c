@@ -16,6 +16,7 @@ int main(void)
 	
 	TIMER1_set_module();
 	TIMER1_set_on();
+	
 	uint16_t fr=1;
 	char text[20];
     while (1) 

@@ -41,8 +41,11 @@ void TIMER1_set_module(){
 	setOutPB1();
 	setModeTogle();
 	} 
-void TIMER1_set_frequency(char frequency[] ){
-	setTopeDelContador(atoi(frequency));
+void TIMER1_set_frequency(char frequencyStr[] ){
+	uint16_t frequency=atoi(frequencyStr);
+	if ((100<frequency)&&(frequency<10000)){
+		setTopeDelContador(frequency);
+	}	
 }
 void TIMER1_set_on(){	
 	setModeCTCnoPreescaler();
