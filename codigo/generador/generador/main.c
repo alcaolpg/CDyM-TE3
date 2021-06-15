@@ -6,26 +6,33 @@
 #include <stdio.h>
 #include <util/delay.h>
 
-int main(void)
-{
-	
-	
-    /* Test
+ /* Test
 	Se probara todas las frecuencias porque si
 	 */
-	
-	TIMER1_set_module();
+
+void testTodasLasFrecuencias(){
+	TIMER1_set_module();		
+	uint16_t frecuencia=90;
+	char frecuenciaStr[20];
 	TIMER1_set_on();
-	
-	uint16_t fr=1;
+	while (1)
+	{	
+		sprintf(frecuenciaStr, "%d", frecuencia++);
+		TIMER1_set_frequency(frecuenciaStr);
+		_delay_ms(100);
+	}
+}
+void testUnaFrecuencia(uint16_t frecuencia){
+	TIMER1_set_module();
 	char text[20];
-    while (1) 
-    {
-		
-		sprintf(text, "%d", fr++);
-		TIMER1_set_frequency(text);
-		_delay_ms(100);	
-    }
-	
+	sprintf(text, "%d", frecuencia);
+	TIMER1_set_frequency(text);
+	TIMER1_set_on();
+	//while (1);
+}
+int main(void)
+{
+	testTodasLasFrecuencias();
+	//testUnaFrecuencia(100);
 }
 
