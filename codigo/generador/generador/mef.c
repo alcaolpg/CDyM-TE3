@@ -1,6 +1,7 @@
 #include "string.h"
 
-#define tam_maximo_comando 32
+
+#define tam_maximo_comando 7
 #define frecuencia_minima 100
 #define frecuencia_maxima 10000
 
@@ -10,7 +11,7 @@ char frecuencia_nueva[5] = "6435";
 char comando_detectado[tam_maximo_comando];
 char indice_lectura = 0;
 
-void mef_generador(char *buffer, int indice_escritura)
+void mef_generador(char *buffer_rx, char tam_buffer_rx, int indice_escritura, char *buffer_tx)
 {
     switch (estado)
     {
@@ -18,7 +19,7 @@ void mef_generador(char *buffer, int indice_escritura)
         estado = set_rst();
         break;
     case 2:
-        estado = captar(buffer, indice_escritura);
+        estado = captar(buffer_rx, tam_buffer_rx, indice_escritura);
         break;
     case 3:
         estado = interpretar();
@@ -33,6 +34,7 @@ void mef_generador(char *buffer, int indice_escritura)
         estado = FREQ();
         break;
     case 7:
+        estado = com_invalid(buffer_tx);
         break;
     }
 }
@@ -49,14 +51,14 @@ unsigned char set_rst()
     return proximo_estado;
 }
 
-unsigned char captar(char *buffer, int indice_escritura) //Preguntar como se translada el indice de escritura
+unsigned char captar(char *buffer, char tam_buffer_rx, int indice_escritura) //Preguntar como se translada el indice de escritura
 {
     /*Se espera el ingreso de la tecla ENTER*/
     unsigned char proximo_estado = 2;
 
-    if (buffer[indice_escritura - 1] == "\0")
+    if ((buffer[indice_escritura - 1] == "\0") && (indice_lectura != indice_escritura))
     {
-        copiar_comando(buffer, indice_lectura);
+        copiar_comando(buffer, indice_lectura,  tam_buffer_rx);//revisar implementacion con buffer circular
         indice_lectura = indice_escritura;
         proximo_estado = 3;
     }
@@ -118,21 +120,26 @@ unsigned char FREQ()
     return proximo_estado;   
 }
 
-unsigned char com_invalid()
+unsigned char com_invalid(char *buffer_tx)
 {
     /*Se informa que el comando recibido es invalido*/
     unsigned char proximo_estado = 7;
-
+    strcpy(buffer_tx, "Comando invalido");
+    ready_to_send();
     return proximo_estado;
 }
 
-void copiar_comando(char *buffer, int indice_lectura_local)
+void copiar_comando(char *buffer, int indice_lectura_local, char tam_buffer_rx)
 {
     char indice_copia = 0;
     while ((buffer[indice_lectura_local] != "\0") && (indice_copia < (tam_maximo_comando - 1)))
     {
         comando_detectado[indice_copia] = buffer[indice_lectura_local];
         indice_lectura_local++;
+        if (indice_lectura_local >= tam_buffer_rx)  //Esto es necesario si RX utiliza un buffer circular
+        {
+            indice_lectura_local = 0;
+        }
         indice_copia++;
     }
     comando_detectado[indice_copia] = "\0";
