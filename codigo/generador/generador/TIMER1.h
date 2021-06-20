@@ -1,7 +1,7 @@
-//incluciones
+//Incluciones
 #include <avr/io.h>
 #include <stdlib.h>
-//definiciones
+//Definiciones
 #ifndef F_CPU
 #define F_CPU 8000000L
 #endif
