@@ -8,6 +8,7 @@
 #define resetCounterOn OCR1A
 #define F_min 100
 #define F_max 10000
+#define F_defecto 6435
 
 /*******************************************************************************************************************
 Este "objeto" permite administrar una onda cuadrada, generada por el TIMER1,

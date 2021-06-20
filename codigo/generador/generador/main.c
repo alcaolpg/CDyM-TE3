@@ -26,13 +26,13 @@ void testUnaFrecuencia(uint16_t frecuencia){
 	TIMER1_set_module();
 	char text[20];
 	sprintf(text, "%d", frecuencia);
-	TIMER1_set_frequency(text);
+	//TIMER1_set_frequency(text);
 	TIMER1_set_on();
 	//while (1);
 }
 int main(void)
 {
-	testTodasLasFrecuencias();
-	//testUnaFrecuencia(100);
+	//testTodasLasFrecuencias();
+	testUnaFrecuencia(100);
 }
 

@@ -6,7 +6,7 @@
 Funciones globales pero privadas al archivo TIMER1.c
 ****************************************************************/
 void	setOutPB1(){
-	DDRB=(1<<PB1); //PB1=salida
+	DDRB=(1<<PB1); //PB1=salida | El puerto PB1 es el OC1A
 }
 void	setModeTogle(){
 	TCCR1A=(1<<COM1A0); //COM1A=Togle  no funciona en modo PWM
@@ -33,7 +33,7 @@ void	setModeCTCnoPreescaler(){
 funciones de acceso publicas
 *****************************************************************/
 void	TIMER1_set_module(){
-	setTopeDelContador(6435);
+	setTopeDelContador(F_defecto);
 	setOutPB1();
 	setModeTogle();
 	} 
