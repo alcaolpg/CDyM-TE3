@@ -48,7 +48,7 @@ void set_uart_rx(unsigned char *buff_adress, int buff_size){
 	RX_interrupt_enable();
 }
 
-char recive_buffer_content(void)
+void recive_buffer_content(void)
 {
 	volatile char RX_Data;
 
