@@ -16,7 +16,7 @@ void mef_generador(char *buffer_rx, char tam_buffer_rx, int indice_escritura, ch
     switch (estado)
     {
     case 1:
-        estado = set_rst();
+        estado = set_rst(buffer_tx);
         break;
     case 2:
         estado = captar(buffer_rx, tam_buffer_rx, indice_escritura);
@@ -39,7 +39,7 @@ void mef_generador(char *buffer_rx, char tam_buffer_rx, int indice_escritura, ch
     }
 }
 
-unsigned char set_rst()
+unsigned char set_rst(char *buffer_tx)
 {
     unsigned char proximo_estado = 2;
     /*Se setean todos los parametros del estaddo por defecto*/
@@ -47,6 +47,7 @@ unsigned char set_rst()
     TIMER1_set_off();
     strcpy(frecuencia_actual, "6435");
     strcpy(frecuencia_nueva, "6435");
+	mensaje_inicial(buffer_tx);
     
     return proximo_estado;
 }
@@ -56,7 +57,7 @@ unsigned char captar(char *buffer, char tam_buffer_rx, int indice_escritura) //P
     /*Se espera el ingreso de la tecla ENTER*/
     unsigned char proximo_estado = 2;
 
-    if ((buffer[indice_escritura - 1] == "\0") && (indice_lectura != indice_escritura))
+    if ((buffer[indice_escritura - 1] == "\0") && (indice_lectura != indice_escritura)) // ver si \0 o \r
     {
         copiar_comando(buffer, indice_lectura,  tam_buffer_rx);//revisar implementacion con buffer circular
         indice_lectura = indice_escritura;
@@ -171,4 +172,10 @@ char es_frecuencia()
         es_frec = 0;
     }
     return es_frec;
+}
+
+void mensaje_inicial(char *buffer_tx)
+{
+	strcpy(buffer_tx, "Mensaje bienvenida");
+	ready_to_send();
 }
