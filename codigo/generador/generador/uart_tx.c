@@ -51,18 +51,26 @@ void done_sending(void)
 	UCSR0B &=~(1<<TXCIE0);	
 }
 
+char USART_data_register_empty(void)
+{
+	return UCSR0A & 1 << UDRE0;
+}
+
 void send_buffer_content(void)
 {
 	static unsigned int i = 0;
 	
 	if ((buffer[i] != "\0") && (i < buffer_size))
 	{
+		while(!USART_data_register_empty());
 		send_data(buffer[i]);
 		i++;
 	}
 	else
 	{
+		while(!USART_data_register_empty());
 		send_data("\r");
+		while(!USART_data_register_empty());
 		send_data("\n");
 		i = 0;
 		done_sending();
