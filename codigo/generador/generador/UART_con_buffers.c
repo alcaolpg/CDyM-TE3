@@ -12,10 +12,10 @@ volatile static char BufferTX[64];
 
 void uart_cb_init(uint8_t serial_port_value)
 {
-	SerialPort_Init(serial_port_value); 		// Inicializo el Puerto Serie. Con 103 para BAUDRATE = 9600 @ 16MHz
-	SerialPort_TX_Enable();		// Activo el Transmisor del Puerto Serie
-	SerialPort_RX_Enable();		// Activo el Receptor del Puerto Serie
-	SerialPort_RX_Interrupt_Enable();	// Activo Interrupci�n de recepcion.
+	SerialPort_Init(serial_port_value);
+	SerialPort_TX_Enable();
+	SerialPort_RX_Enable();
+	SerialPort_RX_Interrupt_Enable();
 	sei();
 }
 
@@ -26,7 +26,7 @@ void uart_cb_listo_para_transmitir()
 
 void uart_cb_transmision_completa()
 {
-	UCSR0B &=~(1<<TXCIE0);
+	UCSR0B &=~ (1<<TXCIE0);
 }
 
 void uart_cb_enviar_dato(char dato)
@@ -41,16 +41,16 @@ char uart_cb_recibir_dato()
 
 char uart_cb_isr_rx()
 {
-		volatile char RX_Data = 0;
+		volatile char RX_Data = '\r';
 		static short int Index=0;
 
 		RX_Data = uart_cb_recibir_dato();
-		if(RX_Data!='\r'){
-			BufferRX[Index++]=RX_Data;
+		if(RX_Data != '\r'){
+			BufferRX[Index++] = RX_Data;
 		}
 		else{
-			BufferRX[Index]='\0';
-			Index=0;
+			BufferRX[Index] = '\0';
+			Index = 0;
 			return 1;
 		}
 		return 0;
@@ -63,7 +63,7 @@ void uart_cb_ultima_recepcion(char *paquete)
 
 void uart_cb_isr_tx()
 {
-	static short int Txindex=0;
+	static short int Txindex = 0;
 	
 	if(BufferTX[Txindex] != '\0'){
 		uart_cb_enviar_dato(BufferTX[Txindex++]);
@@ -71,12 +71,13 @@ void uart_cb_isr_tx()
 	else{
 		uart_cb_enviar_dato('\r');
 		uart_cb_enviar_dato('\n'); //ojo esto es posible porque tengo FIFO de 2 bytes en TX
-		Txindex=0;
+		Txindex = 0;
+		BufferTX[Txindex] = '\0';
 		uart_cb_transmision_completa();//deshabiito int de TXC hasta que necesite transmitir nuevamnete
 	}
 }
 
 void uart_cb_preparar_transmision(char *paquete)
 {
-	strcpy(BufferTX,paquete);
+	strcat(BufferTX,paquete);
 }

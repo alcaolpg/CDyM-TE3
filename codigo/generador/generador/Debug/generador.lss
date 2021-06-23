@@ -3,31 +3,31 @@ generador.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000026  00800100  000002fa  0000038e  2**0
+  0 .data         0000003c  00800100  00000322  000003b6  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         000002fa  00000000  00000000  00000094  2**1
+  1 .text         00000322  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          000000c5  00800126  00800126  000003b4  2**0
+  2 .bss          000000c5  0080013c  0080013c  000003f2  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  000003b4  2**0
+  3 .comment      00000030  00000000  00000000  000003f2  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000003e4  2**2
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000424  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000110  00000000  00000000  00000424  2**0
+  5 .debug_aranges 00000110  00000000  00000000  00000464  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   000008c6  00000000  00000000  00000534  2**0
+  6 .debug_info   00000904  00000000  00000000  00000574  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 0000047c  00000000  00000000  00000dfa  2**0
+  7 .debug_abbrev 0000048f  00000000  00000000  00000e78  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000005e5  00000000  00000000  00001276  2**0
+  8 .debug_line   000005f7  00000000  00000000  00001307  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000002d4  00000000  00000000  0000185c  2**2
+  9 .debug_frame  000002d4  00000000  00000000  00001900  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000041e  00000000  00000000  00001b30  2**0
+ 10 .debug_str    00000425  00000000  00000000  00001bd4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000006be  00000000  00000000  00001f4e  2**0
+ 11 .debug_loc    000006be  00000000  00000000  00001ff9  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000110  00000000  00000000  0000260c  2**0
+ 12 .debug_ranges 00000110  00000000  00000000  000026b7  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -51,9 +51,9 @@ Disassembly of section .text:
   3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
   40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
   44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
-  48:	0c 94 6b 00 	jmp	0xd6	; 0xd6 <__vector_18>
+  48:	0c 94 71 00 	jmp	0xe2	; 0xe2 <__vector_18>
   4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
-  50:	0c 94 91 00 	jmp	0x122	; 0x122 <__vector_20>
+  50:	0c 94 97 00 	jmp	0x12e	; 0x12e <__vector_20>
   54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
   58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
   5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
@@ -72,18 +72,18 @@ Disassembly of section .text:
   74:	11 e0       	ldi	r17, 0x01	; 1
   76:	a0 e0       	ldi	r26, 0x00	; 0
   78:	b1 e0       	ldi	r27, 0x01	; 1
-  7a:	ea ef       	ldi	r30, 0xFA	; 250
-  7c:	f2 e0       	ldi	r31, 0x02	; 2
+  7a:	e2 e2       	ldi	r30, 0x22	; 34
+  7c:	f3 e0       	ldi	r31, 0x03	; 3
   7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
   80:	05 90       	lpm	r0, Z+
   82:	0d 92       	st	X+, r0
-  84:	a6 32       	cpi	r26, 0x26	; 38
+  84:	ac 33       	cpi	r26, 0x3C	; 60
   86:	b1 07       	cpc	r27, r17
   88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
 
 0000008a <__do_clear_bss>:
-  8a:	21 e0       	ldi	r18, 0x01	; 1
-  8c:	a6 e2       	ldi	r26, 0x26	; 38
+  8a:	22 e0       	ldi	r18, 0x02	; 2
+  8c:	ac e3       	ldi	r26, 0x3C	; 60
   8e:	b1 e0       	ldi	r27, 0x01	; 1
   90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
 
@@ -91,11 +91,11 @@ Disassembly of section .text:
   92:	1d 92       	st	X+, r1
 
 00000094 <.do_clear_bss_start>:
-  94:	ab 3e       	cpi	r26, 0xEB	; 235
+  94:	a1 30       	cpi	r26, 0x01	; 1
   96:	b2 07       	cpc	r27, r18
   98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
   9a:	0e 94 53 00 	call	0xa6	; 0xa6 <main>
-  9e:	0c 94 7b 01 	jmp	0x2f6	; 0x2f6 <_exit>
+  9e:	0c 94 8f 01 	jmp	0x31e	; 0x31e <_exit>
 
 000000a2 <__bad_interrupt>:
   a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -108,458 +108,482 @@ Disassembly of section .text:
 // 	sei();								// Activo la mascara global de interrupciones (Bit I del SREG en 1)
 	uart_cb_init(103);
   a6:	87 e6       	ldi	r24, 0x67	; 103
-  a8:	0e 94 00 01 	call	0x200	; 0x200 <uart_cb_init>
-
-	SerialPort_Send_String(msg1);    // Envio el mensaje de Bienvenida
+  a8:	0e 94 06 01 	call	0x20c	; 0x20c <uart_cb_init>
+	//strcpy(Buffer,msg1);
+	//uart_cb_preparar_transmision(Buffer);
+	//uart_cb_listo_para_transmitir();
+	SerialPort_Send_String("No se por que, pero me necesitas \r\n");    // Envio el mensaje de Bienvenida
   ac:	80 e0       	ldi	r24, 0x00	; 0
   ae:	91 e0       	ldi	r25, 0x01	; 1
-  b0:	0e 94 d7 00 	call	0x1ae	; 0x1ae <SerialPort_Send_String>
+  b0:	0e 94 dd 00 	call	0x1ba	; 0x1ba <SerialPort_Send_String>
 
 	while(1)
 	{
 		if( FLAG_linea_recibida == 1)
-  b4:	80 91 26 01 	lds	r24, 0x0126	; 0x800126 <__data_end>
+  b4:	80 91 3c 01 	lds	r24, 0x013C	; 0x80013c <__data_end>
   b8:	81 30       	cpi	r24, 0x01	; 1
   ba:	e1 f7       	brne	.-8      	; 0xb4 <main+0xe>
 		{
 			//SerialPort_Send_String((char *)BufferRX);  // Eco del string (inciso a)
 			//strcpy(BufferTX,BufferRX);	// Eco del string usando int TX (inciso b)
 			uart_cb_ultima_recepcion(Buffer);
-  bc:	87 e2       	ldi	r24, 0x27	; 39
+  bc:	8d e3       	ldi	r24, 0x3D	; 61
   be:	91 e0       	ldi	r25, 0x01	; 1
-  c0:	0e 94 44 01 	call	0x288	; 0x288 <uart_cb_ultima_recepcion>
+  c0:	0e 94 4b 01 	call	0x296	; 0x296 <uart_cb_ultima_recepcion>
 			uart_cb_preparar_transmision(Buffer);
-  c4:	87 e2       	ldi	r24, 0x27	; 39
+  c4:	8d e3       	ldi	r24, 0x3D	; 61
   c6:	91 e0       	ldi	r25, 0x01	; 1
-  c8:	0e 94 6e 01 	call	0x2dc	; 0x2dc <uart_cb_preparar_transmision>
+  c8:	0e 94 77 01 	call	0x2ee	; 0x2ee <uart_cb_preparar_transmision>
 			//UCSR0B |= (1<<TXCIE0);
 			uart_cb_listo_para_transmitir();
-  cc:	0e 94 0a 01 	call	0x214	; 0x214 <uart_cb_listo_para_transmitir>
+  cc:	0e 94 10 01 	call	0x220	; 0x220 <uart_cb_listo_para_transmitir>
+			uart_cb_preparar_transmision("\r\nHasta aca, todo bien");
+  d0:	84 e2       	ldi	r24, 0x24	; 36
+  d2:	91 e0       	ldi	r25, 0x01	; 1
+  d4:	0e 94 77 01 	call	0x2ee	; 0x2ee <uart_cb_preparar_transmision>
+			uart_cb_listo_para_transmitir();
+  d8:	0e 94 10 01 	call	0x220	; 0x220 <uart_cb_listo_para_transmitir>
 			FLAG_linea_recibida=0;
-  d0:	10 92 26 01 	sts	0x0126, r1	; 0x800126 <__data_end>
-  d4:	ef cf       	rjmp	.-34     	; 0xb4 <main+0xe>
+  dc:	10 92 3c 01 	sts	0x013C, r1	; 0x80013c <__data_end>
+  e0:	e9 cf       	rjmp	.-46     	; 0xb4 <main+0xe>
 
-000000d6 <__vector_18>:
+000000e2 <__vector_18>:
 
 //*************************************************
 //Handler de Interrupcion de byte Recibido
 //**************************************************
 
 ISR(USART_RX_vect){
-  d6:	1f 92       	push	r1
-  d8:	0f 92       	push	r0
-  da:	0f b6       	in	r0, 0x3f	; 63
-  dc:	0f 92       	push	r0
-  de:	11 24       	eor	r1, r1
-  e0:	2f 93       	push	r18
-  e2:	3f 93       	push	r19
-  e4:	4f 93       	push	r20
-  e6:	5f 93       	push	r21
-  e8:	6f 93       	push	r22
-  ea:	7f 93       	push	r23
-  ec:	8f 93       	push	r24
-  ee:	9f 93       	push	r25
-  f0:	af 93       	push	r26
-  f2:	bf 93       	push	r27
-  f4:	ef 93       	push	r30
-  f6:	ff 93       	push	r31
+  e2:	1f 92       	push	r1
+  e4:	0f 92       	push	r0
+  e6:	0f b6       	in	r0, 0x3f	; 63
+  e8:	0f 92       	push	r0
+  ea:	11 24       	eor	r1, r1
+  ec:	2f 93       	push	r18
+  ee:	3f 93       	push	r19
+  f0:	4f 93       	push	r20
+  f2:	5f 93       	push	r21
+  f4:	6f 93       	push	r22
+  f6:	7f 93       	push	r23
+  f8:	8f 93       	push	r24
+  fa:	9f 93       	push	r25
+  fc:	af 93       	push	r26
+  fe:	bf 93       	push	r27
+ 100:	ef 93       	push	r30
+ 102:	ff 93       	push	r31
 
 	FLAG_linea_recibida = uart_cb_isr_rx();
-  f8:	0e 94 16 01 	call	0x22c	; 0x22c <uart_cb_isr_rx>
-  fc:	80 93 26 01 	sts	0x0126, r24	; 0x800126 <__data_end>
+ 104:	0e 94 1c 01 	call	0x238	; 0x238 <uart_cb_isr_rx>
+ 108:	80 93 3c 01 	sts	0x013C, r24	; 0x80013c <__data_end>
 // 		//		BufferRX[Index++]='\n';
 // 		BufferRX[Index]='\0';
 // 		Index=0;
 // 		FLAG_linea_recibida=1;
 // 	}
 }
- 100:	ff 91       	pop	r31
- 102:	ef 91       	pop	r30
- 104:	bf 91       	pop	r27
- 106:	af 91       	pop	r26
- 108:	9f 91       	pop	r25
- 10a:	8f 91       	pop	r24
- 10c:	7f 91       	pop	r23
- 10e:	6f 91       	pop	r22
- 110:	5f 91       	pop	r21
- 112:	4f 91       	pop	r20
- 114:	3f 91       	pop	r19
- 116:	2f 91       	pop	r18
- 118:	0f 90       	pop	r0
- 11a:	0f be       	out	0x3f, r0	; 63
- 11c:	0f 90       	pop	r0
- 11e:	1f 90       	pop	r1
- 120:	18 95       	reti
+ 10c:	ff 91       	pop	r31
+ 10e:	ef 91       	pop	r30
+ 110:	bf 91       	pop	r27
+ 112:	af 91       	pop	r26
+ 114:	9f 91       	pop	r25
+ 116:	8f 91       	pop	r24
+ 118:	7f 91       	pop	r23
+ 11a:	6f 91       	pop	r22
+ 11c:	5f 91       	pop	r21
+ 11e:	4f 91       	pop	r20
+ 120:	3f 91       	pop	r19
+ 122:	2f 91       	pop	r18
+ 124:	0f 90       	pop	r0
+ 126:	0f be       	out	0x3f, r0	; 63
+ 128:	0f 90       	pop	r0
+ 12a:	1f 90       	pop	r1
+ 12c:	18 95       	reti
 
-00000122 <__vector_20>:
+0000012e <__vector_20>:
 
 //*************************************************
 //Handler de Interrupcion de Transmisi�n Completa TXC
 //**************************************************
 
 ISR(USART_TX_vect){ //handler de interrupci�n de TXC 
- 122:	1f 92       	push	r1
- 124:	0f 92       	push	r0
- 126:	0f b6       	in	r0, 0x3f	; 63
- 128:	0f 92       	push	r0
- 12a:	11 24       	eor	r1, r1
- 12c:	2f 93       	push	r18
- 12e:	3f 93       	push	r19
- 130:	4f 93       	push	r20
- 132:	5f 93       	push	r21
- 134:	6f 93       	push	r22
- 136:	7f 93       	push	r23
- 138:	8f 93       	push	r24
- 13a:	9f 93       	push	r25
- 13c:	af 93       	push	r26
- 13e:	bf 93       	push	r27
- 140:	ef 93       	push	r30
- 142:	ff 93       	push	r31
+ 12e:	1f 92       	push	r1
+ 130:	0f 92       	push	r0
+ 132:	0f b6       	in	r0, 0x3f	; 63
+ 134:	0f 92       	push	r0
+ 136:	11 24       	eor	r1, r1
+ 138:	2f 93       	push	r18
+ 13a:	3f 93       	push	r19
+ 13c:	4f 93       	push	r20
+ 13e:	5f 93       	push	r21
+ 140:	6f 93       	push	r22
+ 142:	7f 93       	push	r23
+ 144:	8f 93       	push	r24
+ 146:	9f 93       	push	r25
+ 148:	af 93       	push	r26
+ 14a:	bf 93       	push	r27
+ 14c:	ef 93       	push	r30
+ 14e:	ff 93       	push	r31
 
 	uart_cb_isr_tx();
- 144:	0e 94 49 01 	call	0x292	; 0x292 <uart_cb_isr_tx>
+ 150:	0e 94 50 01 	call	0x2a0	; 0x2a0 <uart_cb_isr_tx>
 // 		UDR0='\r';
 // 		UDR0='\n'; //ojo esto es posible porque tengo FIFO de 2 bytes en TX
 // 		Txindex=0;
 // 		uart_cb_transmision_completa();//deshabiito int de TXC hasta que necesite transmitir nuevamnete
 // 	}
- 148:	ff 91       	pop	r31
- 14a:	ef 91       	pop	r30
- 14c:	bf 91       	pop	r27
- 14e:	af 91       	pop	r26
- 150:	9f 91       	pop	r25
- 152:	8f 91       	pop	r24
- 154:	7f 91       	pop	r23
- 156:	6f 91       	pop	r22
- 158:	5f 91       	pop	r21
- 15a:	4f 91       	pop	r20
- 15c:	3f 91       	pop	r19
- 15e:	2f 91       	pop	r18
- 160:	0f 90       	pop	r0
- 162:	0f be       	out	0x3f, r0	; 63
- 164:	0f 90       	pop	r0
- 166:	1f 90       	pop	r1
- 168:	18 95       	reti
+ 154:	ff 91       	pop	r31
+ 156:	ef 91       	pop	r30
+ 158:	bf 91       	pop	r27
+ 15a:	af 91       	pop	r26
+ 15c:	9f 91       	pop	r25
+ 15e:	8f 91       	pop	r24
+ 160:	7f 91       	pop	r23
+ 162:	6f 91       	pop	r22
+ 164:	5f 91       	pop	r21
+ 166:	4f 91       	pop	r20
+ 168:	3f 91       	pop	r19
+ 16a:	2f 91       	pop	r18
+ 16c:	0f 90       	pop	r0
+ 16e:	0f be       	out	0x3f, r0	; 63
+ 170:	0f 90       	pop	r0
+ 172:	1f 90       	pop	r1
+ 174:	18 95       	reti
 
-0000016a <SerialPort_Init>:
+00000176 <SerialPort_Init>:
 	// Pooling - Bloqueante hasta que termine de transmitir.
 	while(!(UCSR0A & (1<<UDRE0)));
 }
 
 void SerialPort_Send_Data(char data){
 	UDR0 = data;
- 16a:	10 92 c1 00 	sts	0x00C1, r1	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7e00c1>
- 16e:	96 e0       	ldi	r25, 0x06	; 6
- 170:	90 93 c2 00 	sts	0x00C2, r25	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7e00c2>
- 174:	10 92 c5 00 	sts	0x00C5, r1	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7e00c5>
- 178:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7e00c4>
- 17c:	08 95       	ret
-
-0000017e <SerialPort_TX_Enable>:
- 17e:	e1 ec       	ldi	r30, 0xC1	; 193
- 180:	f0 e0       	ldi	r31, 0x00	; 0
- 182:	80 81       	ld	r24, Z
- 184:	88 60       	ori	r24, 0x08	; 8
- 186:	80 83       	st	Z, r24
+ 176:	10 92 c1 00 	sts	0x00C1, r1	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7e00c1>
+ 17a:	96 e0       	ldi	r25, 0x06	; 6
+ 17c:	90 93 c2 00 	sts	0x00C2, r25	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7e00c2>
+ 180:	10 92 c5 00 	sts	0x00C5, r1	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7e00c5>
+ 184:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7e00c4>
  188:	08 95       	ret
 
-0000018a <SerialPort_RX_Enable>:
+0000018a <SerialPort_TX_Enable>:
  18a:	e1 ec       	ldi	r30, 0xC1	; 193
  18c:	f0 e0       	ldi	r31, 0x00	; 0
  18e:	80 81       	ld	r24, Z
- 190:	80 61       	ori	r24, 0x10	; 16
+ 190:	88 60       	ori	r24, 0x08	; 8
  192:	80 83       	st	Z, r24
  194:	08 95       	ret
 
-00000196 <SerialPort_RX_Interrupt_Enable>:
+00000196 <SerialPort_RX_Enable>:
  196:	e1 ec       	ldi	r30, 0xC1	; 193
  198:	f0 e0       	ldi	r31, 0x00	; 0
  19a:	80 81       	ld	r24, Z
- 19c:	80 68       	ori	r24, 0x80	; 128
+ 19c:	80 61       	ori	r24, 0x10	; 16
  19e:	80 83       	st	Z, r24
  1a0:	08 95       	ret
 
-000001a2 <SerialPort_Wait_For_TX_Buffer_Free>:
- 1a2:	e0 ec       	ldi	r30, 0xC0	; 192
+000001a2 <SerialPort_RX_Interrupt_Enable>:
+ 1a2:	e1 ec       	ldi	r30, 0xC1	; 193
  1a4:	f0 e0       	ldi	r31, 0x00	; 0
  1a6:	80 81       	ld	r24, Z
- 1a8:	85 ff       	sbrs	r24, 5
- 1aa:	fd cf       	rjmp	.-6      	; 0x1a6 <SerialPort_Wait_For_TX_Buffer_Free+0x4>
+ 1a8:	80 68       	ori	r24, 0x80	; 128
+ 1aa:	80 83       	st	Z, r24
  1ac:	08 95       	ret
 
-000001ae <SerialPort_Send_String>:
+000001ae <SerialPort_Wait_For_TX_Buffer_Free>:
+ 1ae:	e0 ec       	ldi	r30, 0xC0	; 192
+ 1b0:	f0 e0       	ldi	r31, 0x00	; 0
+ 1b2:	80 81       	ld	r24, Z
+ 1b4:	85 ff       	sbrs	r24, 5
+ 1b6:	fd cf       	rjmp	.-6      	; 0x1b2 <SerialPort_Wait_For_TX_Buffer_Free+0x4>
+ 1b8:	08 95       	ret
+
+000001ba <SerialPort_Send_String>:
 }
 
 void SerialPort_Send_String(char * msg){ //msg -> "Hola como andan hoy?" 20 ASCII+findecadena, tardo=20ms
- 1ae:	cf 92       	push	r12
- 1b0:	df 92       	push	r13
- 1b2:	ef 92       	push	r14
- 1b4:	ff 92       	push	r15
- 1b6:	0f 93       	push	r16
- 1b8:	1f 93       	push	r17
- 1ba:	cf 93       	push	r28
+ 1ba:	cf 92       	push	r12
+ 1bc:	df 92       	push	r13
+ 1be:	ef 92       	push	r14
+ 1c0:	ff 92       	push	r15
+ 1c2:	0f 93       	push	r16
+ 1c4:	1f 93       	push	r17
+ 1c6:	cf 93       	push	r28
 	uint8_t i = 0;
 	//'\0' = 0x00
 	while(msg[i]){ // *(msg+i)
- 1bc:	fc 01       	movw	r30, r24
- 1be:	20 81       	ld	r18, Z
- 1c0:	22 23       	and	r18, r18
- 1c2:	b1 f0       	breq	.+44     	; 0x1f0 <SerialPort_Send_String+0x42>
- 1c4:	7c 01       	movw	r14, r24
- 1c6:	8c 01       	movw	r16, r24
- 1c8:	c0 e0       	ldi	r28, 0x00	; 0
+ 1c8:	fc 01       	movw	r30, r24
+ 1ca:	20 81       	ld	r18, Z
+ 1cc:	22 23       	and	r18, r18
+ 1ce:	b1 f0       	breq	.+44     	; 0x1fc <SerialPort_Send_String+0x42>
+ 1d0:	7c 01       	movw	r14, r24
+ 1d2:	8c 01       	movw	r16, r24
+ 1d4:	c0 e0       	ldi	r28, 0x00	; 0
 	// Pooling - Bloqueante hasta que termine de transmitir.
 	while(!(UCSR0A & (1<<UDRE0)));
 }
 
 void SerialPort_Send_Data(char data){
 	UDR0 = data;
- 1ca:	0f 2e       	mov	r0, r31
- 1cc:	f6 ec       	ldi	r31, 0xC6	; 198
- 1ce:	cf 2e       	mov	r12, r31
- 1d0:	d1 2c       	mov	r13, r1
- 1d2:	f0 2d       	mov	r31, r0
+ 1d6:	0f 2e       	mov	r0, r31
+ 1d8:	f6 ec       	ldi	r31, 0xC6	; 198
+ 1da:	cf 2e       	mov	r12, r31
+ 1dc:	d1 2c       	mov	r13, r1
+ 1de:	f0 2d       	mov	r31, r0
 
 void SerialPort_Send_String(char * msg){ //msg -> "Hola como andan hoy?" 20 ASCII+findecadena, tardo=20ms
 	uint8_t i = 0;
 	//'\0' = 0x00
 	while(msg[i]){ // *(msg+i)
 		SerialPort_Wait_For_TX_Buffer_Free(); //9600bps formato 8N1, 10bits, 10.Tbit=10/9600=1ms 
- 1d4:	0e 94 d1 00 	call	0x1a2	; 0x1a2 <SerialPort_Wait_For_TX_Buffer_Free>
+ 1e0:	0e 94 d7 00 	call	0x1ae	; 0x1ae <SerialPort_Wait_For_TX_Buffer_Free>
 		SerialPort_Send_Data(msg[i]);
- 1d8:	f8 01       	movw	r30, r16
- 1da:	90 81       	ld	r25, Z
+ 1e4:	f8 01       	movw	r30, r16
+ 1e6:	90 81       	ld	r25, Z
 	// Pooling - Bloqueante hasta que termine de transmitir.
 	while(!(UCSR0A & (1<<UDRE0)));
 }
 
 void SerialPort_Send_Data(char data){
 	UDR0 = data;
- 1dc:	f6 01       	movw	r30, r12
- 1de:	90 83       	st	Z, r25
+ 1e8:	f6 01       	movw	r30, r12
+ 1ea:	90 83       	st	Z, r25
 	uint8_t i = 0;
 	//'\0' = 0x00
 	while(msg[i]){ // *(msg+i)
 		SerialPort_Wait_For_TX_Buffer_Free(); //9600bps formato 8N1, 10bits, 10.Tbit=10/9600=1ms 
 		SerialPort_Send_Data(msg[i]);
 		i++;
- 1e0:	cf 5f       	subi	r28, 0xFF	; 255
+ 1ec:	cf 5f       	subi	r28, 0xFF	; 255
 }
 
 void SerialPort_Send_String(char * msg){ //msg -> "Hola como andan hoy?" 20 ASCII+findecadena, tardo=20ms
 	uint8_t i = 0;
 	//'\0' = 0x00
 	while(msg[i]){ // *(msg+i)
- 1e2:	87 01       	movw	r16, r14
- 1e4:	0c 0f       	add	r16, r28
- 1e6:	11 1d       	adc	r17, r1
- 1e8:	f8 01       	movw	r30, r16
- 1ea:	90 81       	ld	r25, Z
- 1ec:	91 11       	cpse	r25, r1
- 1ee:	f2 cf       	rjmp	.-28     	; 0x1d4 <SerialPort_Send_String+0x26>
+ 1ee:	87 01       	movw	r16, r14
+ 1f0:	0c 0f       	add	r16, r28
+ 1f2:	11 1d       	adc	r17, r1
+ 1f4:	f8 01       	movw	r30, r16
+ 1f6:	90 81       	ld	r25, Z
+ 1f8:	91 11       	cpse	r25, r1
+ 1fa:	f2 cf       	rjmp	.-28     	; 0x1e0 <SerialPort_Send_String+0x26>
 		SerialPort_Wait_For_TX_Buffer_Free(); //9600bps formato 8N1, 10bits, 10.Tbit=10/9600=1ms 
 		SerialPort_Send_Data(msg[i]);
 		i++;
 	}
 }
- 1f0:	cf 91       	pop	r28
- 1f2:	1f 91       	pop	r17
- 1f4:	0f 91       	pop	r16
- 1f6:	ff 90       	pop	r15
- 1f8:	ef 90       	pop	r14
- 1fa:	df 90       	pop	r13
- 1fc:	cf 90       	pop	r12
- 1fe:	08 95       	ret
+ 1fc:	cf 91       	pop	r28
+ 1fe:	1f 91       	pop	r17
+ 200:	0f 91       	pop	r16
+ 202:	ff 90       	pop	r15
+ 204:	ef 90       	pop	r14
+ 206:	df 90       	pop	r13
+ 208:	cf 90       	pop	r12
+ 20a:	08 95       	ret
 
-00000200 <uart_cb_init>:
+0000020c <uart_cb_init>:
 }
 
 char uart_cb_recibir_dato()
 {
 	return UDR0;
 }
- 200:	0e 94 b5 00 	call	0x16a	; 0x16a <SerialPort_Init>
- 204:	0e 94 bf 00 	call	0x17e	; 0x17e <SerialPort_TX_Enable>
- 208:	0e 94 c5 00 	call	0x18a	; 0x18a <SerialPort_RX_Enable>
- 20c:	0e 94 cb 00 	call	0x196	; 0x196 <SerialPort_RX_Interrupt_Enable>
- 210:	78 94       	sei
- 212:	08 95       	ret
-
-00000214 <uart_cb_listo_para_transmitir>:
- 214:	e1 ec       	ldi	r30, 0xC1	; 193
- 216:	f0 e0       	ldi	r31, 0x00	; 0
- 218:	80 81       	ld	r24, Z
- 21a:	80 64       	ori	r24, 0x40	; 64
- 21c:	80 83       	st	Z, r24
+ 20c:	0e 94 bb 00 	call	0x176	; 0x176 <SerialPort_Init>
+ 210:	0e 94 c5 00 	call	0x18a	; 0x18a <SerialPort_TX_Enable>
+ 214:	0e 94 cb 00 	call	0x196	; 0x196 <SerialPort_RX_Enable>
+ 218:	0e 94 d1 00 	call	0x1a2	; 0x1a2 <SerialPort_RX_Interrupt_Enable>
+ 21c:	78 94       	sei
  21e:	08 95       	ret
 
-00000220 <uart_cb_transmision_completa>:
+00000220 <uart_cb_listo_para_transmitir>:
  220:	e1 ec       	ldi	r30, 0xC1	; 193
  222:	f0 e0       	ldi	r31, 0x00	; 0
  224:	80 81       	ld	r24, Z
- 226:	8f 7b       	andi	r24, 0xBF	; 191
+ 226:	80 64       	ori	r24, 0x40	; 64
  228:	80 83       	st	Z, r24
  22a:	08 95       	ret
 
-0000022c <uart_cb_isr_rx>:
+0000022c <uart_cb_transmision_completa>:
+ 22c:	e1 ec       	ldi	r30, 0xC1	; 193
+ 22e:	f0 e0       	ldi	r31, 0x00	; 0
+ 230:	80 81       	ld	r24, Z
+ 232:	8f 7b       	andi	r24, 0xBF	; 191
+ 234:	80 83       	st	Z, r24
+ 236:	08 95       	ret
+
+00000238 <uart_cb_isr_rx>:
 
 char uart_cb_isr_rx()
 {
- 22c:	cf 93       	push	r28
- 22e:	df 93       	push	r29
- 230:	1f 92       	push	r1
- 232:	cd b7       	in	r28, 0x3d	; 61
- 234:	de b7       	in	r29, 0x3e	; 62
-		volatile char RX_Data = 0;
- 236:	19 82       	std	Y+1, r1	; 0x01
+ 238:	cf 93       	push	r28
+ 23a:	df 93       	push	r29
+ 23c:	1f 92       	push	r1
+ 23e:	cd b7       	in	r28, 0x3d	; 61
+ 240:	de b7       	in	r29, 0x3e	; 62
+		volatile char RX_Data = '\r';
+ 242:	8d e0       	ldi	r24, 0x0D	; 13
+ 244:	89 83       	std	Y+1, r24	; 0x01
 	UDR0 = dato;
 }
 
 char uart_cb_recibir_dato()
 {
 	return UDR0;
- 238:	80 91 c6 00 	lds	r24, 0x00C6	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7e00c6>
+ 246:	80 91 c6 00 	lds	r24, 0x00C6	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7e00c6>
 char uart_cb_isr_rx()
 {
-		volatile char RX_Data = 0;
+		volatile char RX_Data = '\r';
 		static short int Index=0;
 
 		RX_Data = uart_cb_recibir_dato();
- 23c:	89 83       	std	Y+1, r24	; 0x01
-		if(RX_Data!='\r'){
- 23e:	89 81       	ldd	r24, Y+1	; 0x01
- 240:	8d 30       	cpi	r24, 0x0D	; 13
- 242:	91 f0       	breq	.+36     	; 0x268 <uart_cb_isr_rx+0x3c>
-			BufferRX[Index++]=RX_Data;
- 244:	80 91 69 01 	lds	r24, 0x0169	; 0x800169 <Index.1659>
- 248:	90 91 6a 01 	lds	r25, 0x016A	; 0x80016a <Index.1659+0x1>
- 24c:	9c 01       	movw	r18, r24
- 24e:	2f 5f       	subi	r18, 0xFF	; 255
- 250:	3f 4f       	sbci	r19, 0xFF	; 255
- 252:	30 93 6a 01 	sts	0x016A, r19	; 0x80016a <Index.1659+0x1>
- 256:	20 93 69 01 	sts	0x0169, r18	; 0x800169 <Index.1659>
- 25a:	29 81       	ldd	r18, Y+1	; 0x01
- 25c:	fc 01       	movw	r30, r24
- 25e:	e5 55       	subi	r30, 0x55	; 85
- 260:	fe 4f       	sbci	r31, 0xFE	; 254
- 262:	20 83       	st	Z, r18
+ 24a:	89 83       	std	Y+1, r24	; 0x01
+		if(RX_Data != '\r'){
+ 24c:	89 81       	ldd	r24, Y+1	; 0x01
+ 24e:	8d 30       	cpi	r24, 0x0D	; 13
+ 250:	91 f0       	breq	.+36     	; 0x276 <uart_cb_isr_rx+0x3e>
+			BufferRX[Index++] = RX_Data;
+ 252:	80 91 7f 01 	lds	r24, 0x017F	; 0x80017f <Index.1659>
+ 256:	90 91 80 01 	lds	r25, 0x0180	; 0x800180 <Index.1659+0x1>
+ 25a:	9c 01       	movw	r18, r24
+ 25c:	2f 5f       	subi	r18, 0xFF	; 255
+ 25e:	3f 4f       	sbci	r19, 0xFF	; 255
+ 260:	30 93 80 01 	sts	0x0180, r19	; 0x800180 <Index.1659+0x1>
+ 264:	20 93 7f 01 	sts	0x017F, r18	; 0x80017f <Index.1659>
+ 268:	29 81       	ldd	r18, Y+1	; 0x01
+ 26a:	fc 01       	movw	r30, r24
+ 26c:	ef 53       	subi	r30, 0x3F	; 63
+ 26e:	fe 4f       	sbci	r31, 0xFE	; 254
+ 270:	20 83       	st	Z, r18
 		else{
-			BufferRX[Index]='\0';
-			Index=0;
+			BufferRX[Index] = '\0';
+			Index = 0;
 			return 1;
 		}
 		return 0;
- 264:	80 e0       	ldi	r24, 0x00	; 0
- 266:	0c c0       	rjmp	.+24     	; 0x280 <uart_cb_isr_rx+0x54>
+ 272:	80 e0       	ldi	r24, 0x00	; 0
+ 274:	0c c0       	rjmp	.+24     	; 0x28e <uart_cb_isr_rx+0x56>
 		RX_Data = uart_cb_recibir_dato();
-		if(RX_Data!='\r'){
-			BufferRX[Index++]=RX_Data;
+		if(RX_Data != '\r'){
+			BufferRX[Index++] = RX_Data;
 		}
 		else{
-			BufferRX[Index]='\0';
- 268:	e0 91 69 01 	lds	r30, 0x0169	; 0x800169 <Index.1659>
- 26c:	f0 91 6a 01 	lds	r31, 0x016A	; 0x80016a <Index.1659+0x1>
- 270:	e5 55       	subi	r30, 0x55	; 85
- 272:	fe 4f       	sbci	r31, 0xFE	; 254
- 274:	10 82       	st	Z, r1
-			Index=0;
- 276:	10 92 6a 01 	sts	0x016A, r1	; 0x80016a <Index.1659+0x1>
- 27a:	10 92 69 01 	sts	0x0169, r1	; 0x800169 <Index.1659>
+			BufferRX[Index] = '\0';
+ 276:	e0 91 7f 01 	lds	r30, 0x017F	; 0x80017f <Index.1659>
+ 27a:	f0 91 80 01 	lds	r31, 0x0180	; 0x800180 <Index.1659+0x1>
+ 27e:	ef 53       	subi	r30, 0x3F	; 63
+ 280:	fe 4f       	sbci	r31, 0xFE	; 254
+ 282:	10 82       	st	Z, r1
+			Index = 0;
+ 284:	10 92 80 01 	sts	0x0180, r1	; 0x800180 <Index.1659+0x1>
+ 288:	10 92 7f 01 	sts	0x017F, r1	; 0x80017f <Index.1659>
 			return 1;
- 27e:	81 e0       	ldi	r24, 0x01	; 1
+ 28c:	81 e0       	ldi	r24, 0x01	; 1
 		}
 		return 0;
 }
- 280:	0f 90       	pop	r0
- 282:	df 91       	pop	r29
- 284:	cf 91       	pop	r28
- 286:	08 95       	ret
+ 28e:	0f 90       	pop	r0
+ 290:	df 91       	pop	r29
+ 292:	cf 91       	pop	r28
+ 294:	08 95       	ret
 
-00000288 <uart_cb_ultima_recepcion>:
+00000296 <uart_cb_ultima_recepcion>:
 
 void uart_cb_ultima_recepcion(char *paquete)
 {
 	strcpy(paquete,BufferRX);
- 288:	6b ea       	ldi	r22, 0xAB	; 171
- 28a:	71 e0       	ldi	r23, 0x01	; 1
- 28c:	0e 94 74 01 	call	0x2e8	; 0x2e8 <strcpy>
- 290:	08 95       	ret
+ 296:	61 ec       	ldi	r22, 0xC1	; 193
+ 298:	71 e0       	ldi	r23, 0x01	; 1
+ 29a:	0e 94 88 01 	call	0x310	; 0x310 <strcpy>
+ 29e:	08 95       	ret
 
-00000292 <uart_cb_isr_tx>:
+000002a0 <uart_cb_isr_tx>:
 
 void uart_cb_isr_tx()
 {
-	static short int Txindex=0;
+	static short int Txindex = 0;
 	
 	if(BufferTX[Txindex] != '\0'){
- 292:	80 91 67 01 	lds	r24, 0x0167	; 0x800167 <Txindex.1665>
- 296:	90 91 68 01 	lds	r25, 0x0168	; 0x800168 <Txindex.1665+0x1>
- 29a:	fc 01       	movw	r30, r24
- 29c:	e5 59       	subi	r30, 0x95	; 149
- 29e:	fe 4f       	sbci	r31, 0xFE	; 254
- 2a0:	20 81       	ld	r18, Z
- 2a2:	22 23       	and	r18, r18
- 2a4:	71 f0       	breq	.+28     	; 0x2c2 <uart_cb_isr_tx+0x30>
+ 2a0:	80 91 7d 01 	lds	r24, 0x017D	; 0x80017d <Txindex.1665>
+ 2a4:	90 91 7e 01 	lds	r25, 0x017E	; 0x80017e <Txindex.1665+0x1>
+ 2a8:	fc 01       	movw	r30, r24
+ 2aa:	ef 57       	subi	r30, 0x7F	; 127
+ 2ac:	fe 4f       	sbci	r31, 0xFE	; 254
+ 2ae:	20 81       	ld	r18, Z
+ 2b0:	22 23       	and	r18, r18
+ 2b2:	71 f0       	breq	.+28     	; 0x2d0 <uart_cb_isr_tx+0x30>
 		uart_cb_enviar_dato(BufferTX[Txindex++]);
- 2a6:	9c 01       	movw	r18, r24
- 2a8:	2f 5f       	subi	r18, 0xFF	; 255
- 2aa:	3f 4f       	sbci	r19, 0xFF	; 255
- 2ac:	30 93 68 01 	sts	0x0168, r19	; 0x800168 <Txindex.1665+0x1>
- 2b0:	20 93 67 01 	sts	0x0167, r18	; 0x800167 <Txindex.1665>
- 2b4:	fc 01       	movw	r30, r24
- 2b6:	e5 59       	subi	r30, 0x95	; 149
- 2b8:	fe 4f       	sbci	r31, 0xFE	; 254
- 2ba:	80 81       	ld	r24, Z
-	UCSR0B &=~(1<<TXCIE0);
+ 2b4:	9c 01       	movw	r18, r24
+ 2b6:	2f 5f       	subi	r18, 0xFF	; 255
+ 2b8:	3f 4f       	sbci	r19, 0xFF	; 255
+ 2ba:	30 93 7e 01 	sts	0x017E, r19	; 0x80017e <Txindex.1665+0x1>
+ 2be:	20 93 7d 01 	sts	0x017D, r18	; 0x80017d <Txindex.1665>
+ 2c2:	fc 01       	movw	r30, r24
+ 2c4:	ef 57       	subi	r30, 0x7F	; 127
+ 2c6:	fe 4f       	sbci	r31, 0xFE	; 254
+ 2c8:	80 81       	ld	r24, Z
+	UCSR0B &=~ (1<<TXCIE0);
 }
 
 void uart_cb_enviar_dato(char dato)
 {
 	UDR0 = dato;
- 2bc:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7e00c6>
- 2c0:	08 95       	ret
- 2c2:	e6 ec       	ldi	r30, 0xC6	; 198
- 2c4:	f0 e0       	ldi	r31, 0x00	; 0
- 2c6:	8d e0       	ldi	r24, 0x0D	; 13
- 2c8:	80 83       	st	Z, r24
- 2ca:	8a e0       	ldi	r24, 0x0A	; 10
- 2cc:	80 83       	st	Z, r24
+ 2ca:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7e00c6>
+ 2ce:	08 95       	ret
+ 2d0:	e6 ec       	ldi	r30, 0xC6	; 198
+ 2d2:	f0 e0       	ldi	r31, 0x00	; 0
+ 2d4:	8d e0       	ldi	r24, 0x0D	; 13
+ 2d6:	80 83       	st	Z, r24
+ 2d8:	8a e0       	ldi	r24, 0x0A	; 10
+ 2da:	80 83       	st	Z, r24
 		uart_cb_enviar_dato(BufferTX[Txindex++]);
 	}
 	else{
 		uart_cb_enviar_dato('\r');
 		uart_cb_enviar_dato('\n'); //ojo esto es posible porque tengo FIFO de 2 bytes en TX
-		Txindex=0;
- 2ce:	10 92 68 01 	sts	0x0168, r1	; 0x800168 <Txindex.1665+0x1>
- 2d2:	10 92 67 01 	sts	0x0167, r1	; 0x800167 <Txindex.1665>
+		Txindex = 0;
+ 2dc:	10 92 7e 01 	sts	0x017E, r1	; 0x80017e <Txindex.1665+0x1>
+ 2e0:	10 92 7d 01 	sts	0x017D, r1	; 0x80017d <Txindex.1665>
+		BufferTX[Txindex] = '\0';
+ 2e4:	10 92 81 01 	sts	0x0181, r1	; 0x800181 <BufferTX>
 		uart_cb_transmision_completa();//deshabiito int de TXC hasta que necesite transmitir nuevamnete
- 2d6:	0e 94 10 01 	call	0x220	; 0x220 <uart_cb_transmision_completa>
- 2da:	08 95       	ret
+ 2e8:	0e 94 16 01 	call	0x22c	; 0x22c <uart_cb_transmision_completa>
+ 2ec:	08 95       	ret
 
-000002dc <uart_cb_preparar_transmision>:
+000002ee <uart_cb_preparar_transmision>:
 	}
 }
 
 void uart_cb_preparar_transmision(char *paquete)
 {
-	strcpy(BufferTX,paquete);
- 2dc:	bc 01       	movw	r22, r24
- 2de:	8b e6       	ldi	r24, 0x6B	; 107
- 2e0:	91 e0       	ldi	r25, 0x01	; 1
- 2e2:	0e 94 74 01 	call	0x2e8	; 0x2e8 <strcpy>
- 2e6:	08 95       	ret
+	strcat(BufferTX,paquete);
+ 2ee:	bc 01       	movw	r22, r24
+ 2f0:	81 e8       	ldi	r24, 0x81	; 129
+ 2f2:	91 e0       	ldi	r25, 0x01	; 1
+ 2f4:	0e 94 7d 01 	call	0x2fa	; 0x2fa <strcat>
+ 2f8:	08 95       	ret
 
-000002e8 <strcpy>:
- 2e8:	fb 01       	movw	r30, r22
- 2ea:	dc 01       	movw	r26, r24
- 2ec:	01 90       	ld	r0, Z+
- 2ee:	0d 92       	st	X+, r0
- 2f0:	00 20       	and	r0, r0
- 2f2:	e1 f7       	brne	.-8      	; 0x2ec <strcpy+0x4>
- 2f4:	08 95       	ret
+000002fa <strcat>:
+ 2fa:	fb 01       	movw	r30, r22
+ 2fc:	dc 01       	movw	r26, r24
+ 2fe:	0d 90       	ld	r0, X+
+ 300:	00 20       	and	r0, r0
+ 302:	e9 f7       	brne	.-6      	; 0x2fe <strcat+0x4>
+ 304:	11 97       	sbiw	r26, 0x01	; 1
+ 306:	01 90       	ld	r0, Z+
+ 308:	0d 92       	st	X+, r0
+ 30a:	00 20       	and	r0, r0
+ 30c:	e1 f7       	brne	.-8      	; 0x306 <strcat+0xc>
+ 30e:	08 95       	ret
 
-000002f6 <_exit>:
- 2f6:	f8 94       	cli
+00000310 <strcpy>:
+ 310:	fb 01       	movw	r30, r22
+ 312:	dc 01       	movw	r26, r24
+ 314:	01 90       	ld	r0, Z+
+ 316:	0d 92       	st	X+, r0
+ 318:	00 20       	and	r0, r0
+ 31a:	e1 f7       	brne	.-8      	; 0x314 <strcpy+0x4>
+ 31c:	08 95       	ret
 
-000002f8 <__stop_program>:
- 2f8:	ff cf       	rjmp	.-2      	; 0x2f8 <__stop_program>
+0000031e <_exit>:
+ 31e:	f8 94       	cli
+
+00000320 <__stop_program>:
+ 320:	ff cf       	rjmp	.-2      	; 0x320 <__stop_program>

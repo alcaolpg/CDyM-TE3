@@ -26,8 +26,10 @@ int main(void)
 // 	SerialPort_RX_Interrupt_Enable();	// Activo Interrupci�n de recepcion.
 // 	sei();								// Activo la mascara global de interrupciones (Bit I del SREG en 1)
 	uart_cb_init(103);
-
-	SerialPort_Send_String(msg1);    // Envio el mensaje de Bienvenida
+	//strcpy(Buffer,msg1);
+	//uart_cb_preparar_transmision(Buffer);
+	//uart_cb_listo_para_transmitir();
+	SerialPort_Send_String("No se por que, pero me necesitas \r\n");    // Envio el mensaje de Bienvenida
 
 	while(1)
 	{
@@ -38,6 +40,8 @@ int main(void)
 			uart_cb_ultima_recepcion(Buffer);
 			uart_cb_preparar_transmision(Buffer);
 			//UCSR0B |= (1<<TXCIE0);
+			uart_cb_listo_para_transmitir();
+			uart_cb_preparar_transmision("\r\nHasta aca, todo bien");
 			uart_cb_listo_para_transmitir();
 			FLAG_linea_recibida=0;
 		}
