@@ -35,7 +35,8 @@ int main(void)
 		{
 			//SerialPort_Send_String((char *)BufferRX);  // Eco del string (inciso a)
 			strcpy(BufferTX,BufferRX);	// Eco del string usando int TX (inciso b)
-			UCSR0B |= (1<<TXCIE0);
+			//UCSR0B |= (1<<TXCIE0);
+			uart_cb_listo_para_enviar();
 			FLAG_linea_recibida=0;
 		}
 		//otras tareas

@@ -50,3 +50,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+codigo/generador/generador/Debug/generador.lss
+codigo/generador/generador/Debug/generador.srec
+codigo/generador/generador/Debug/makedep.mk
+codigo/generador/generador/Debug/Makefile
+codigo/generador/generador/generador.cproj
+test/Last Loaded generador_simulacion_proteus.pdsbak

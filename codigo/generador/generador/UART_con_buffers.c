@@ -14,3 +14,8 @@ void uart_cb_init(uint8_t serial_port_value)
 	SerialPort_RX_Interrupt_Enable();	// Activo Interrupci�n de recepcion.
 	sei();
 }
+
+void uart_cb_listo_para_enviar()
+{
+	UCSR0B |= (1<<TXCIE0);
+}
