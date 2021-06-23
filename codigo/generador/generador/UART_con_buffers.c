@@ -29,6 +29,11 @@ void uart_cb_transmision_completa()
 	UCSR0B &=~(1<<TXCIE0);
 }
 
+void uart_cb_enviar_dato(char dato)
+{
+	UDR0 = dato;
+}
+
 char uart_cb_isr_rx()
 {
 		volatile char RX_Data = 0;
@@ -56,12 +61,12 @@ void uart_cb_isr_tx()
 	static short int Txindex=0;
 	
 	if(BufferTX[Txindex]!='\0'){
-		UDR0=BufferTX[Txindex];
+		uart_cb_enviar_dato(BufferTX[Txindex]);
 		Txindex++;
 	}
 	else{
-		UDR0='\r';
-		UDR0='\n'; //ojo esto es posible porque tengo FIFO de 2 bytes en TX
+		uart_cb_enviar_dato('\r');
+		uart_cb_enviar_dato('\n'); //ojo esto es posible porque tengo FIFO de 2 bytes en TX
 		Txindex=0;
 		uart_cb_transmision_completa();//deshabiito int de TXC hasta que necesite transmitir nuevamnete
 	}
