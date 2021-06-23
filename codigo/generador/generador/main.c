@@ -29,7 +29,7 @@ int main(void)
 	//strcpy(Buffer,msg1);
 	//uart_cb_preparar_transmision(Buffer);
 	//uart_cb_listo_para_transmitir();
-	SerialPort_Send_String("No se por que, pero me necesitas \r\n");    // Envio el mensaje de Bienvenida
+	// Envio el mensaje de Bienvenida
 
 	while(1)
 	{

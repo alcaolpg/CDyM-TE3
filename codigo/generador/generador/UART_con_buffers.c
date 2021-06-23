@@ -6,7 +6,7 @@
  */ 
 #include "serialPort.h"
 #include <string.h>
-#define tam_buffer 69
+#define tam_buffer 256
 
 volatile static char BufferRX[tam_buffer];
 volatile static char BufferTX[tam_buffer];
@@ -18,6 +18,7 @@ void uart_cb_init(uint8_t serial_port_value)
 	SerialPort_TX_Enable();
 	SerialPort_RX_Enable();
 	SerialPort_RX_Interrupt_Enable();
+	SerialPort_Send_String("\n");
 	sei();
 }
 
@@ -84,6 +85,8 @@ void uart_cb_isr_tx()
 		uart_cb_enviar_dato('\n'); //ojo esto es posible porque tengo FIFO de 2 bytes en TX
 		txIndex = 0;
 		BufferTX[txIndex] = '\0';
+		nivel_bufferTx = 0;
+		
 		uart_cb_transmision_completa();//deshabiito int de TXC hasta que necesite transmitir nuevamnete
 	}
 }
