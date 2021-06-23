@@ -8,6 +8,7 @@
 #include <string.h>
 
 volatile static char BufferRX[64];
+volatile static char BufferTX[64];
 
 void uart_cb_init(uint8_t serial_port_value)
 {
@@ -48,4 +49,25 @@ char uart_cb_isr_rx()
 void uart_cb_ultima_recepcion(char *paquete)
 {
 	strcpy(paquete,BufferRX);
+}
+
+void uart_cb_isr_tx()
+{
+	static short int Txindex=0;
+	
+	if(BufferTX[Txindex]!='\0'){
+		UDR0=BufferTX[Txindex];
+		Txindex++;
+	}
+	else{
+		UDR0='\r';
+		UDR0='\n'; //ojo esto es posible porque tengo FIFO de 2 bytes en TX
+		Txindex=0;
+		uart_cb_transmision_completa();//deshabiito int de TXC hasta que necesite transmitir nuevamnete
+	}
+}
+
+void uart_cb_preparar_transmision(char *paquete)
+{
+	strcpy(BufferTX,paquete);
 }

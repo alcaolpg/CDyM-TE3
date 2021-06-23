@@ -13,6 +13,8 @@
 	void uart_cb_transmision_completa();
 	char uart_cb_isr_rx();
 	void uart_cb_ultima_recepcion(char *paquete);
+	void uart_cb_isr_tx();
+	void uart_cb_preparar_transmision(char *paquete);
 
 
 

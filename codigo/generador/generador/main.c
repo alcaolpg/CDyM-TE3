@@ -10,8 +10,8 @@
 #include <string.h>
 #define  F_CPU 16000000L
 //variables de comunicaci�n Back/Foreground
-volatile static char BufferRX[64];
-volatile static char BufferTX[64];
+//volatile static char BufferRX[64];
+volatile static char Buffer[64];
 volatile unsigned char FLAG_linea_recibida=0;
 
 //Mensaje de bienvenida
@@ -35,7 +35,8 @@ int main(void)
 		{
 			//SerialPort_Send_String((char *)BufferRX);  // Eco del string (inciso a)
 			//strcpy(BufferTX,BufferRX);	// Eco del string usando int TX (inciso b)
-			uart_cb_ultima_recepcion(BufferTX);
+			uart_cb_ultima_recepcion(Buffer);
+			uart_cb_preparar_transmision(Buffer);
 			//UCSR0B |= (1<<TXCIE0);
 			uart_cb_listo_para_transmitir();
 			FLAG_linea_recibida=0;
@@ -75,16 +76,17 @@ ISR(USART_RX_vect){
 
 ISR(USART_TX_vect){ //handler de interrupci�n de TXC 
 
-	static short int Txindex=0;
-	
-	if(BufferTX[Txindex]!='\0'){
-		UDR0=BufferTX[Txindex];
-		Txindex++;
-	}
-	else{
-		UDR0='\r';
-		UDR0='\n'; //ojo esto es posible porque tengo FIFO de 2 bytes en TX
-		Txindex=0;
-		uart_cb_transmision_completa();//deshabiito int de TXC hasta que necesite transmitir nuevamnete
-	}
+	uart_cb_isr_tx();
+// 	static short int Txindex=0;
+// 	
+// 	if(BufferTX[Txindex]!='\0'){
+// 		UDR0=BufferTX[Txindex];
+// 		Txindex++;
+// 	}
+// 	else{
+// 		UDR0='\r';
+// 		UDR0='\n'; //ojo esto es posible porque tengo FIFO de 2 bytes en TX
+// 		Txindex=0;
+// 		uart_cb_transmision_completa();//deshabiito int de TXC hasta que necesite transmitir nuevamnete
+// 	}
 }
