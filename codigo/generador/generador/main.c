@@ -34,7 +34,8 @@ int main(void)
 		if( FLAG_linea_recibida == 1)
 		{
 			//SerialPort_Send_String((char *)BufferRX);  // Eco del string (inciso a)
-			strcpy(BufferTX,BufferRX);	// Eco del string usando int TX (inciso b)
+			//strcpy(BufferTX,BufferRX);	// Eco del string usando int TX (inciso b)
+			uart_cb_ultima_recepcion(BufferTX);
 			//UCSR0B |= (1<<TXCIE0);
 			uart_cb_listo_para_transmitir();
 			FLAG_linea_recibida=0;
@@ -49,21 +50,23 @@ int main(void)
 //**************************************************
 
 ISR(USART_RX_vect){
-	
-	volatile char RX_Data = 0;
-	static short int Index=0;
 
-	RX_Data = UDR0;
-	if(RX_Data!='\r'){
-		BufferRX[Index++]=RX_Data;
-	}
-	else{
-		//	    BufferRX[Index++]='\r'; //opcional
-		//		BufferRX[Index++]='\n';
-		BufferRX[Index]='\0';
-		Index=0;
-		FLAG_linea_recibida=1;
-	}
+	FLAG_linea_recibida = uart_cb_isr_rx();
+	
+// 	volatile char RX_Data = 0;
+// 	static short int Index=0;
+// 
+// 	RX_Data = UDR0;
+// 	if(RX_Data!='\r'){
+// 		BufferRX[Index++]=RX_Data;
+// 	}
+// 	else{
+// 		//	    BufferRX[Index++]='\r'; //opcional
+// 		//		BufferRX[Index++]='\n';
+// 		BufferRX[Index]='\0';
+// 		Index=0;
+// 		FLAG_linea_recibida=1;
+// 	}
 }
 
 //*************************************************

@@ -11,6 +11,8 @@
 	void uart_cb_init(uint8_t serial_port_value);
 	void uart_cb_listo_para_transmitir();
 	void uart_cb_transmision_completa();
+	char uart_cb_isr_rx();
+	void uart_cb_ultima_recepcion(char *paquete);
 
 
 

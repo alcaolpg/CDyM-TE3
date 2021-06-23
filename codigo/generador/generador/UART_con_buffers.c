@@ -5,6 +5,9 @@
  *  Author: Agustín
  */ 
 #include "serialPort.h"
+#include <string.h>
+
+volatile static char BufferRX[64];
 
 void uart_cb_init(uint8_t serial_port_value)
 {
@@ -23,4 +26,26 @@ void uart_cb_listo_para_transmitir()
 void uart_cb_transmision_completa()
 {
 	UCSR0B &=~(1<<TXCIE0);
+}
+
+char uart_cb_isr_rx()
+{
+		volatile char RX_Data = 0;
+		static short int Index=0;
+
+		RX_Data = UDR0;
+		if(RX_Data!='\r'){
+			BufferRX[Index++]=RX_Data;
+		}
+		else{
+			BufferRX[Index]='\0';
+			Index=0;
+			return 1;
+		}
+		return 0;
+}
+
+void uart_cb_ultima_recepcion(char *paquete)
+{
+	strcpy(paquete,BufferRX);
 }
