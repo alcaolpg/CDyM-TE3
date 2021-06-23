@@ -34,12 +34,17 @@ void uart_cb_enviar_dato(char dato)
 	UDR0 = dato;
 }
 
+char uart_cb_recibir_dato()
+{
+	return UDR0;
+}
+
 char uart_cb_isr_rx()
 {
 		volatile char RX_Data = 0;
 		static short int Index=0;
 
-		RX_Data = UDR0;
+		RX_Data = uart_cb_recibir_dato();
 		if(RX_Data!='\r'){
 			BufferRX[Index++]=RX_Data;
 		}
@@ -60,9 +65,8 @@ void uart_cb_isr_tx()
 {
 	static short int Txindex=0;
 	
-	if(BufferTX[Txindex]!='\0'){
-		uart_cb_enviar_dato(BufferTX[Txindex]);
-		Txindex++;
+	if(BufferTX[Txindex] != '\0'){
+		uart_cb_enviar_dato(BufferTX[Txindex++]);
 	}
 	else{
 		uart_cb_enviar_dato('\r');
