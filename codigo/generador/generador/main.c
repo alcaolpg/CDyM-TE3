@@ -6,6 +6,7 @@
  */ 
 
 #include "serialPort.h"
+#include "UART_con_buffers.h"
 #include <string.h>
 #define  F_CPU 16000000L
 //variables de comunicaci�n Back/Foreground
@@ -19,11 +20,12 @@ char msg1[] = "Programa con interrupciones de RX \n\r";
 int main(void)
 {
 	// INICIALIZACIONES
-	SerialPort_Init(103); 		// Inicializo el Puerto Serie. Con 103 para BAUDRATE = 9600 @ 16MHz
-	SerialPort_TX_Enable();		// Activo el Transmisor del Puerto Serie
-	SerialPort_RX_Enable();		// Activo el Receptor del Puerto Serie
-	SerialPort_RX_Interrupt_Enable();	// Activo Interrupci�n de recepcion.
-	sei();								// Activo la mascara global de interrupciones (Bit I del SREG en 1)
+// 	SerialPort_Init(103); 		// Inicializo el Puerto Serie. Con 103 para BAUDRATE = 9600 @ 16MHz
+// 	SerialPort_TX_Enable();		// Activo el Transmisor del Puerto Serie
+// 	SerialPort_RX_Enable();		// Activo el Receptor del Puerto Serie
+// 	SerialPort_RX_Interrupt_Enable();	// Activo Interrupci�n de recepcion.
+// 	sei();								// Activo la mascara global de interrupciones (Bit I del SREG en 1)
+	uart_cb_init(103);
 
 	SerialPort_Send_String(msg1);    // Envio el mensaje de Bienvenida
 
