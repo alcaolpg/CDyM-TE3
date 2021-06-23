@@ -9,7 +9,8 @@
 #ifndef UART_CON_BUFFERS_H_
 #define UART_CON_BUFFERS_H_
 	void uart_cb_init(uint8_t serial_port_value);
-	void uart_cb_listo_para_enviar();
+	void uart_cb_listo_para_transmitir();
+	void uart_cb_transmision_completa();
 
 
 

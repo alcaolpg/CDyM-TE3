@@ -15,7 +15,12 @@ void uart_cb_init(uint8_t serial_port_value)
 	sei();
 }
 
-void uart_cb_listo_para_enviar()
+void uart_cb_listo_para_transmitir()
 {
 	UCSR0B |= (1<<TXCIE0);
+}
+
+void uart_cb_transmision_completa()
+{
+	UCSR0B &=~(1<<TXCIE0);
 }

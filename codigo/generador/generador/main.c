@@ -36,7 +36,7 @@ int main(void)
 			//SerialPort_Send_String((char *)BufferRX);  // Eco del string (inciso a)
 			strcpy(BufferTX,BufferRX);	// Eco del string usando int TX (inciso b)
 			//UCSR0B |= (1<<TXCIE0);
-			uart_cb_listo_para_enviar();
+			uart_cb_listo_para_transmitir();
 			FLAG_linea_recibida=0;
 		}
 		//otras tareas
@@ -82,6 +82,6 @@ ISR(USART_TX_vect){ //handler de interrupci�n de TXC
 		UDR0='\r';
 		UDR0='\n'; //ojo esto es posible porque tengo FIFO de 2 bytes en TX
 		Txindex=0;
-		UCSR0B &=~(1<<TXCIE0);//deshabiito int de TXC hasta que necesite transmitir nuevamnete
+		uart_cb_transmision_completa();//deshabiito int de TXC hasta que necesite transmitir nuevamnete
 	}
 }
