@@ -1,25 +1,38 @@
 #include "string.h"
-
+#include "UART_con_buffers.h"
+#include <stdlib.h>
 
 #define tam_maximo_comando 7
 #define frecuencia_minima 100
 #define frecuencia_maxima 10000
+#define tam_buffer 256
+
+void mef_generador(char comando_entrante);
+unsigned char set_rst();
+unsigned char captar(char comando_entrante);
+unsigned char interpretar();
+unsigned char ON();
+unsigned char OFF();
+unsigned char FREQ();
+unsigned char com_invalid();
+char es_comando(char *comando_esperado);
+char es_frecuencia();
+void mensaje_inicial();
 
 unsigned char estado = 1;
-char frecuencia_actual[5] = "6435";
-char frecuencia_nueva[5] = "6435";
-char comando_detectado[tam_maximo_comando];
-char indice_lectura = 0;
+char frecuencia_actual[6] = "6435";
+char frecuencia_nueva[6] = "6435";
+char comando_detectado[tam_buffer];
 
-void mef_generador(char *buffer_rx, char tam_buffer_rx, int indice_escritura, char *buffer_tx)
+void mef_generador(char comando_entrante)
 {
     switch (estado)
     {
     case 1:
-        estado = set_rst(buffer_tx);
+        estado = set_rst();
         break;
     case 2:
-        estado = captar(buffer_rx, tam_buffer_rx, indice_escritura);
+        estado = captar(comando_entrante);
         break;
     case 3:
         estado = interpretar();
@@ -34,12 +47,12 @@ void mef_generador(char *buffer_rx, char tam_buffer_rx, int indice_escritura, ch
         estado = FREQ();
         break;
     case 7:
-        estado = com_invalid(buffer_tx);
+        estado = com_invalid();
         break;
     }
 }
 
-unsigned char set_rst(char *buffer_tx)
+unsigned char set_rst()
 {
     unsigned char proximo_estado = 2;
     /*Se setean todos los parametros del estaddo por defecto*/
@@ -47,22 +60,16 @@ unsigned char set_rst(char *buffer_tx)
     TIMER1_set_off();
     strcpy(frecuencia_actual, "6435");
     strcpy(frecuencia_nueva, "6435");
-	mensaje_inicial(buffer_tx);
     
     return proximo_estado;
 }
 
-unsigned char captar(char *buffer, char tam_buffer_rx, int indice_escritura) //Preguntar como se translada el indice de escritura
+unsigned char captar(char comando_entrante)
 {
     /*Se espera el ingreso de la tecla ENTER*/
     unsigned char proximo_estado = 2;
-
-    if ((buffer[indice_escritura - 1] == "\0") && (indice_lectura != indice_escritura)) // ver si \0 o \r
-    {
-        copiar_comando(buffer, indice_lectura,  tam_buffer_rx);//revisar implementacion con buffer circular
-        indice_lectura = indice_escritura;
-        proximo_estado = 3;
-    }
+	
+	if (comando_entrante) proximo_estado = 3;
 
     return proximo_estado;
 }
@@ -72,6 +79,8 @@ unsigned char interpretar()
     /* Se interpretan las cadenas de caracteres dentro del buffer circular, desde la posicion de la ultima lectura, hasta la
     posicion de la tecla ENTER*/
     unsigned char proximo_estado = 7;
+	uart_cb_ultima_recepcion(comando_detectado);
+	
     if(es_comando("ON"))
     {
         proximo_estado = 4;
@@ -101,6 +110,8 @@ unsigned char ON()
     /*Se comienza a reproducir un sonido*/
     unsigned char proximo_estado = 2;
     TIMER1_set_on();
+	uart_cb_preparar_transmision("Encendido\r\n");
+	uart_cb_listo_para_transmitir();
     return proximo_estado;
 }
 
@@ -109,6 +120,8 @@ unsigned char OFF()
     /*Se detiene la reproduccion de sonido*/
     unsigned char proximo_estado = 2;
     TIMER1_set_off();
+	uart_cb_preparar_transmision("Apagado\r\n");
+	uart_cb_listo_para_transmitir();
     return proximo_estado;
 }
 
@@ -118,33 +131,22 @@ unsigned char FREQ()
     unsigned char proximo_estado = 2;
     TIMER1_set_frequency(frecuencia_nueva);
     strcpy(frecuencia_actual,frecuencia_nueva);
+	uart_cb_preparar_transmision("Frecuencia: ");
+	uart_cb_preparar_transmision(frecuencia_nueva);
+	uart_cb_preparar_transmision("\r\n");
+	uart_cb_listo_para_transmitir();
     return proximo_estado;   
 }
 
-unsigned char com_invalid(char *buffer_tx)
+unsigned char com_invalid()
 {
     /*Se informa que el comando recibido es invalido*/
     unsigned char proximo_estado = 7;
-    strcpy(buffer_tx, "Comando invalido");
-    ready_to_send();
+    uart_cb_preparar_transmision("Comando invalido\r\n");
+	uart_cb_listo_para_transmitir();
     return proximo_estado;
 }
 
-void copiar_comando(char *buffer, int indice_lectura_local, char tam_buffer_rx)
-{
-    char indice_copia = 0;
-    while ((buffer[indice_lectura_local] != "\0") && (indice_copia < (tam_maximo_comando - 1)))
-    {
-        comando_detectado[indice_copia] = buffer[indice_lectura_local];
-        indice_lectura_local++;
-        if (indice_lectura_local >= tam_buffer_rx)  //Esto es necesario si RX utiliza un buffer circular
-        {
-            indice_lectura_local = 0;
-        }
-        indice_copia++;
-    }
-    comando_detectado[indice_copia] = "\0";
-}
 
 char es_comando(char *comando_esperado)
 {
@@ -174,8 +176,10 @@ char es_frecuencia()
     return es_frec;
 }
 
-void mensaje_inicial(char *buffer_tx)
+void mensaje_inicial()
 {
-	strcpy(buffer_tx, "Mensaje bienvenida");
-	ready_to_send();
+	uart_cb_preparar_transmision("Generador de señales digitales programable\r\n");
+	uart_cb_preparar_transmision("Ingrese frecuencia (100 - 10000 Hz)\r\n");
+	uart_cb_preparar_transmision("ON: Encendido | OFF: Apagado | RST: Reiniciar\r\n");
+	uart_cb_listo_para_transmitir();
 }
