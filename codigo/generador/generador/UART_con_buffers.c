@@ -84,12 +84,12 @@ void uart_cb_isr_tx()
 	else
 	{
 		uart_cb_enviar_dato('\r');
-		uart_cb_enviar_dato('\n'); //ojo esto es posible porque tengo FIFO de 2 bytes en TX
+		uart_cb_enviar_dato('\n');
 		txIndex = 0;
 		BufferTX[txIndex] = '\0';
 		nivel_bufferTx = 0;
 		
-		uart_cb_transmision_completa();//deshabiito int de TXC hasta que necesite transmitir nuevamnete
+		uart_cb_transmision_completa();
 	}
 }
 

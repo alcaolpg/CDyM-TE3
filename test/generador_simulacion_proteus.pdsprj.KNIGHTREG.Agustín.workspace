@@ -1,9 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
 <WORKSPACE>
- <FRAME activewindow="1">
+ <FRAME activewindow="0">
   <PLACEMENT>2c0000000200000003000000ffffffffffffffffffffffffffffffffbf02000051000000db06000010040000</PLACEMENT>
   <WINDOW type="default" module="ISIS"/>
-  <WINDOW type="default" module="VSMDEBUG"/>
  </FRAME>
  <MODULE name="VSMDEBUG">
   <PWI>
@@ -32,7 +31,7 @@
      <ITEM name="nItems">0</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="450" x="78" flags="00000023" y="169" h="250" pid="0" iid="2">
+   <POPUP w="450" x="78" flags="00000022" y="169" h="250" pid="0" iid="2">
     <PROPERTIES>
      <ITEM name="AutoEcho">0</ITEM>
      <ITEM name="HexMode">0</ITEM>
@@ -101,11 +100,17 @@
      <ITEM name="TopLineAddress">00000020</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="600" x="823" flags="0000002b" y="390" h="400" pid="1" iid="1">
+   <POPUP w="600" x="459" flags="0000002b" y="513" h="400" pid="1" iid="1">
     <PROPERTIES>
-     <ITEM name="Breakpoint 0">"main",00AC,0006,9CE6,DAAA,-1
+     <ITEM name="Breakpoint 0">"main",00B4,0000,435F,DAAA,-1
 </ITEM>
-     <ITEM name="Breakpoint 1">"main",00AC,0006,F528,DAAA,1
+     <ITEM name="Breakpoint 1">"main",00BA,0006,2EB3,DAAA,-1
+</ITEM>
+     <ITEM name="Breakpoint 2">"main",00BA,0006,F50F,DAAA,-1
+</ITEM>
+     <ITEM name="Breakpoint 3">"__vector_18",00E6,0022,979D,DAAA,-1
+</ITEM>
+     <ITEM name="Breakpoint 4">"interpretar",020E,002C,E639,ED85,-1
 </ITEM>
      <ITEM name="CaseSensitive">No</ITEM>
      <ITEM name="DISPADDRS">Yes</ITEM>
@@ -113,15 +118,15 @@
      <ITEM name="DISPOPCODES">No</ITEM>
      <ITEM name="FIXUPBPTS">Yes</ITEM>
      <ITEM name="WordsOnly">No</ITEM>
-     <ITEM name="nBreakpoints">0</ITEM>
+     <ITEM name="nBreakpoints">5</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="300" x="258" flags="0000000b" y="349" h="300" pid="2" iid="1">
+   <POPUP w="522" x="1250" flags="0000000b" y="226" h="476" pid="2" iid="1">
     <PROPERTIES>
      <ITEM name="Address Column Width">94</ITEM>
      <ITEM name="AutoResize">No</ITEM>
      <ITEM name="Gridlines">Yes</ITEM>
-     <ITEM name="Name Column Width">94</ITEM>
+     <ITEM name="Name Column Width">158</ITEM>
      <ITEM name="ShowAddresses">Yes</ITEM>
      <ITEM name="ShowGlobals">Yes</ITEM>
      <ITEM name="ShowPreviousValues">No</ITEM>

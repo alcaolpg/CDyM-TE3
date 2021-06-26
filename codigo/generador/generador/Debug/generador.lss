@@ -15,19 +15,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 00000180  00000000  00000000  00000714  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00000e85  00000000  00000000  00000894  2**0
+  6 .debug_info   00000e63  00000000  00000000  00000894  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000679  00000000  00000000  00001719  2**0
+  7 .debug_abbrev 00000679  00000000  00000000  000016f7  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000008a0  00000000  00000000  00001d92  2**0
+  8 .debug_line   0000089f  00000000  00000000  00001d70  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000003ac  00000000  00000000  00002634  2**2
+  9 .debug_frame  000003ac  00000000  00000000  00002610  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000050d  00000000  00000000  000029e0  2**0
+ 10 .debug_str    00000508  00000000  00000000  000029bc  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000009e6  00000000  00000000  00002eed  2**0
+ 11 .debug_loc    000009e6  00000000  00000000  00002ec4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000170  00000000  00000000  000038d3  2**0
+ 12 .debug_ranges 00000170  00000000  00000000  000038aa  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -108,7 +108,7 @@ Disassembly of section .text:
   b0:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
 000000b4 <main>:
-char msg1[] = "Programa con interrupciones de RX \n\r";
+char FLAG_linea_recibida=0;
 
 int main(void)
 {
@@ -123,21 +123,16 @@ int main(void)
   ba:	80 ed       	ldi	r24, 0xD0	; 208
   bc:	91 e0       	ldi	r25, 0x01	; 1
   be:	0e 94 31 01 	call	0x262	; 0x262 <mef_generador>
-// 			uart_cb_preparar_transmision("\r\nHasta aca, todo bien");
-// 			uart_cb_listo_para_transmitir();
-// 			FLAG_linea_recibida=0;
-// 		}
-
 	}
   c2:	fb cf       	rjmp	.-10     	; 0xba <main+0x6>
 
 000000c4 <__vector_18>:
+	return 0;
+}
 
-//*************************************************
-//Handler de Interrupcion de byte Recibido
-//**************************************************
 
-ISR(USART_RX_vect){
+ISR(USART_RX_vect)
+{
   c4:	1f 92       	push	r1
   c6:	0f 92       	push	r0
   c8:	0f b6       	in	r0, 0x3f	; 63
@@ -155,15 +150,9 @@ ISR(USART_RX_vect){
   e0:	bf 93       	push	r27
   e2:	ef 93       	push	r30
   e4:	ff 93       	push	r31
-
 	FLAG_linea_recibida = uart_cb_isr_rx();
   e6:	0e 94 cc 01 	call	0x398	; 0x398 <uart_cb_isr_rx>
   ea:	80 93 d0 01 	sts	0x01D0, r24	; 0x8001d0 <__data_end>
-// 		//		BufferRX[Index++]='\n';
-// 		BufferRX[Index]='\0';
-// 		Index=0;
-// 		FLAG_linea_recibida=1;
-// 	}
 }
   ee:	ff 91       	pop	r31
   f0:	ef 91       	pop	r30
@@ -185,11 +174,8 @@ ISR(USART_RX_vect){
 
 00000110 <__vector_20>:
 
-//*************************************************
-//Handler de Interrupcion de Transmisi�n Completa TXC
-//**************************************************
-
-ISR(USART_TX_vect){ //handler de interrupci�n de TXC 
+ISR(USART_TX_vect)
+{
  110:	1f 92       	push	r1
  112:	0f 92       	push	r0
  114:	0f b6       	in	r0, 0x3f	; 63
@@ -207,14 +193,8 @@ ISR(USART_TX_vect){ //handler de interrupci�n de TXC
  12c:	bf 93       	push	r27
  12e:	ef 93       	push	r30
  130:	ff 93       	push	r31
-
 	uart_cb_isr_tx();
  132:	0e 94 0c 02 	call	0x418	; 0x418 <uart_cb_isr_tx>
-// 		UDR0='\r';
-// 		UDR0='\n'; //ojo esto es posible porque tengo FIFO de 2 bytes en TX
-// 		Txindex=0;
-// 		uart_cb_transmision_completa();//deshabiito int de TXC hasta que necesite transmitir nuevamnete
-// 	}
  136:	ff 91       	pop	r31
  138:	ef 91       	pop	r30
  13a:	bf 91       	pop	r27
@@ -908,7 +888,7 @@ void uart_cb_enviar_dato(char dato)
 	else
 	{
 		uart_cb_enviar_dato('\r');
-		uart_cb_enviar_dato('\n'); //ojo esto es posible porque tengo FIFO de 2 bytes en TX
+		uart_cb_enviar_dato('\n');
 		txIndex = 0;
  46c:	10 92 d2 01 	sts	0x01D2, r1	; 0x8001d2 <txIndex.1666+0x1>
  470:	10 92 d1 01 	sts	0x01D1, r1	; 0x8001d1 <txIndex.1666>
@@ -917,7 +897,7 @@ void uart_cb_enviar_dato(char dato)
 		nivel_bufferTx = 0;
  478:	10 92 d5 01 	sts	0x01D5, r1	; 0x8001d5 <nivel_bufferTx>
 		
-		uart_cb_transmision_completa();//deshabiito int de TXC hasta que necesite transmitir nuevamnete
+		uart_cb_transmision_completa();
  47c:	0e 94 c6 01 	call	0x38c	; 0x38c <uart_cb_transmision_completa>
 	}
 }
