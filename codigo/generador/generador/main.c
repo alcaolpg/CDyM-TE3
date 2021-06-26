@@ -7,45 +7,38 @@
 
 #include "serialPort.h"
 #include "UART_con_buffers.h"
+#include "mef.h"
 #include <string.h>
+#include <avr/io.h>
+#include <stdint.h>
 #define  F_CPU 16000000L
 //variables de comunicaci�n Back/Foreground
 //volatile static char BufferRX[64];
 volatile static char Buffer[64];
-volatile unsigned char FLAG_linea_recibida=0;
+char FLAG_linea_recibida=0;
 
 //Mensaje de bienvenida
 char msg1[] = "Programa con interrupciones de RX \n\r";
 
 int main(void)
 {
-	// INICIALIZACIONES
-// 	SerialPort_Init(103); 		// Inicializo el Puerto Serie. Con 103 para BAUDRATE = 9600 @ 16MHz
-// 	SerialPort_TX_Enable();		// Activo el Transmisor del Puerto Serie
-// 	SerialPort_RX_Enable();		// Activo el Receptor del Puerto Serie
-// 	SerialPort_RX_Interrupt_Enable();	// Activo Interrupci�n de recepcion.
-// 	sei();								// Activo la mascara global de interrupciones (Bit I del SREG en 1)
+
 	uart_cb_init(103);
-	//strcpy(Buffer,msg1);
-	//uart_cb_preparar_transmision(Buffer);
-	//uart_cb_listo_para_transmitir();
-	// Envio el mensaje de Bienvenida
 
 	while(1)
 	{
-		if( FLAG_linea_recibida == 1)
-		{
-			//SerialPort_Send_String((char *)BufferRX);  // Eco del string (inciso a)
-			//strcpy(BufferTX,BufferRX);	// Eco del string usando int TX (inciso b)
-			uart_cb_ultima_recepcion(Buffer);
-			uart_cb_preparar_transmision(Buffer);
-			//UCSR0B |= (1<<TXCIE0);
-			uart_cb_listo_para_transmitir();
-			uart_cb_preparar_transmision("\r\nHasta aca, todo bien");
-			uart_cb_listo_para_transmitir();
-			FLAG_linea_recibida=0;
-		}
-		//otras tareas
+		mef_generador(&FLAG_linea_recibida);
+// 		if( FLAG_linea_recibida == 1)
+// 		{
+// 
+// 			uart_cb_ultima_recepcion(Buffer);
+// 			uart_cb_preparar_transmision(Buffer);
+// 			uart_cb_listo_para_transmitir();
+// 			uart_cb_preparar_transmision("\r\nHasta aca, todo bien");
+// 			uart_cb_listo_para_transmitir();
+// 			FLAG_linea_recibida=0;
+// 		}
+
 	}
 	return 0;
 }

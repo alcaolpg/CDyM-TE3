@@ -6,13 +6,15 @@
  */ 
 #include "serialPort.h"
 #include <string.h>
+#include <avr/io.h>
+#include <stdint.h>
 #define tam_buffer 256
 
 volatile static char BufferRX[tam_buffer];
 volatile static char BufferTX[tam_buffer];
 unsigned static char nivel_bufferTx = 0;
 
-void uart_cb_init(uint8_t serial_port_value)
+void uart_cb_init(unsigned char serial_port_value)
 {
 	SerialPort_Init(serial_port_value);
 	SerialPort_TX_Enable();

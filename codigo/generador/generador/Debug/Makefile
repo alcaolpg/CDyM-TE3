@@ -38,7 +38,9 @@ SUBDIRS :=
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../main.c \
-../mef.c
+../mef.c \
+../serialPort.c \
+../UART_con_buffers.c
 
 
 PREPROCESSING_SRCS += 
@@ -49,19 +51,27 @@ ASM_SRCS +=
 
 OBJS +=  \
 main.o \
-mef.o
+mef.o \
+serialPort.o \
+UART_con_buffers.o
 
 OBJS_AS_ARGS +=  \
 main.o \
-mef.o
+mef.o \
+serialPort.o \
+UART_con_buffers.o
 
 C_DEPS +=  \
 main.d \
-mef.d
+mef.d \
+serialPort.d \
+UART_con_buffers.d
 
 C_DEPS_AS_ARGS +=  \
 main.d \
-mef.d
+mef.d \
+serialPort.d \
+UART_con_buffers.d
 
 OUTPUT_FILE_PATH +=generador.elf
 
@@ -77,6 +87,10 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
+
+
 
 
 

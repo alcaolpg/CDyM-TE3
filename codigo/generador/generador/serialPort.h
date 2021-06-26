@@ -19,7 +19,7 @@
 	// -------- Prototipos de funciones Publicas ---------------
 	
 	// Inicializacion de Puerto Serie
-	void SerialPort_Init(uint8_t);
+	void SerialPort_Init(unsigned char);
 
 	// Inicializacion de Transmisor
 	void SerialPort_TX_Enable(void);

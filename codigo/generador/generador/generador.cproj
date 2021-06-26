@@ -137,6 +137,18 @@
     <Compile Include="mef.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="mef.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="serialPort.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="serialPort.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="UART_con_buffers.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="UART_con_buffers.h">
       <SubType>compile</SubType>
     </Compile>
