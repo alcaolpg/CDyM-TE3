@@ -180,7 +180,7 @@ char es_frecuencia()
 
 void mensaje_inicial()
 {
-	uart_cb_preparar_transmision("Generador de señales digitales programable\r\n");
+	uart_cb_preparar_transmision("Generador de sonidos digitales programable\r\n");
 	uart_cb_preparar_transmision("Ingrese frecuencia (100 - 10000 Hz)\r\n");
 	uart_cb_preparar_transmision("ON: Encendido | OFF: Apagado | RST: Reiniciar\r\n");
 	uart_cb_listo_para_transmitir();
