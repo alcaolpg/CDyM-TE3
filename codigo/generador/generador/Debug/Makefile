@@ -40,6 +40,7 @@ C_SRCS +=  \
 ../main.c \
 ../mef.c \
 ../serialPort.c \
+../TIMER1.c \
 ../UART_con_buffers.c
 
 
@@ -53,24 +54,28 @@ OBJS +=  \
 main.o \
 mef.o \
 serialPort.o \
+TIMER1.o \
 UART_con_buffers.o
 
 OBJS_AS_ARGS +=  \
 main.o \
 mef.o \
 serialPort.o \
+TIMER1.o \
 UART_con_buffers.o
 
 C_DEPS +=  \
 main.d \
 mef.d \
 serialPort.d \
+TIMER1.d \
 UART_con_buffers.d
 
 C_DEPS_AS_ARGS +=  \
 main.d \
 mef.d \
 serialPort.d \
+TIMER1.d \
 UART_con_buffers.d
 
 OUTPUT_FILE_PATH +=generador.elf
@@ -87,6 +92,8 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 

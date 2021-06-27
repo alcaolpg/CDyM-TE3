@@ -8,5 +8,7 @@ mef.c
 
 serialPort.c
 
+TIMER1.c
+
 UART_con_buffers.c
 

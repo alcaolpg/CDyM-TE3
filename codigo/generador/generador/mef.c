@@ -1,5 +1,6 @@
 #include "string.h"
 #include "UART_con_buffers.h"
+#include "TIMER1.h"
 #include <stdlib.h>
 
 #define tam_maximo_comando 7
@@ -55,8 +56,7 @@ unsigned char set_rst()
 {
     unsigned char proximo_estado = 2;
     /*Se setean todos los parametros del estaddo por defecto*/
-//     TIMER1_reset_module();
-//     TIMER1_set_off();
+    TIMER1_reset_module();
     strcpy(frecuencia_actual, "6435");
 	mensaje_inicial();
     
@@ -111,7 +111,7 @@ unsigned char ON()
 {
     /*Se comienza a reproducir un sonido*/
     unsigned char proximo_estado = 2;
-/*    TIMER1_set_on();*/
+    TIMER1_set_on();
 	uart_cb_preparar_transmision("Encendido\r\n");
 	uart_cb_listo_para_transmitir();
     return proximo_estado;
@@ -121,7 +121,7 @@ unsigned char OFF()
 {
     /*Se detiene la reproduccion de sonido*/
     unsigned char proximo_estado = 2;
-/*    TIMER1_set_off();*/
+    TIMER1_set_off();
 	uart_cb_preparar_transmision("Apagado\r\n");
 	uart_cb_listo_para_transmitir();
     return proximo_estado;
@@ -131,8 +131,8 @@ unsigned char FREQ()
 {
     /*Se establece la frecuencia a reproducior segun el valor recibido*/
     unsigned char proximo_estado = 2;
-/*    TIMER1_set_frequency(frecuencia_nueva);*/
     strcpy(frecuencia_actual,comando_detectado);
+	TIMER1_set_frequency(frecuencia_actual);
 	uart_cb_preparar_transmision("Frecuencia: ");
 	uart_cb_preparar_transmision(frecuencia_actual);
 	uart_cb_preparar_transmision("\r\n");

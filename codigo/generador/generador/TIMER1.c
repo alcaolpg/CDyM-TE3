@@ -1,5 +1,4 @@
 #include "Timer1.h"
-
 //parametros de configuracion del timer
 
 /***************************************************************
@@ -17,9 +16,10 @@ void	setModeCTCnoClock(){
 uint8_t isRangoAdmitido(uint16_t frequency){
 	return (F_min<=frequency)&&(frequency<=F_max);
 }
-uint8_t setTopeDelContador(uint16_t frecuenciaDeseada){
+uint8_t setTopeDelContador(uint32_t frecuenciaDeseada){
 	if (isRangoAdmitido(frecuenciaDeseada)){
-		resetCounterOn= (F_CPU/(2*1*frecuenciaDeseada))-1;
+		resetCounterOn= ((int)(F_CPU/(2*1*frecuenciaDeseada))) - 1;
+
 	return 1;
 	}
 	return 0;

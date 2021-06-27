@@ -146,6 +146,12 @@
     <Compile Include="serialPort.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="TIMER1.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="TIMER1.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="UART_con_buffers.c">
       <SubType>compile</SubType>
     </Compile>

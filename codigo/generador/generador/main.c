@@ -11,7 +11,7 @@
 #include <string.h>
 #include <avr/io.h>
 #include <stdint.h>
-#define  F_CPU 16000000L
+#define  F_CPU 8000000L
 
 volatile static char Buffer[64];
 char FLAG_linea_recibida=0;
@@ -19,7 +19,7 @@ char FLAG_linea_recibida=0;
 int main(void)
 {
 
-	uart_cb_init(103);
+	uart_cb_init(51);
 
 	while(1)
 	{
