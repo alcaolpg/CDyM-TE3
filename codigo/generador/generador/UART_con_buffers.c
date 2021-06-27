@@ -58,7 +58,15 @@ char uart_cb_isr_rx()
 			{
 				rxIndex = 0;
 			}
-			BufferRX[rxIndex++] = RX_Data;
+			if(RX_Data == 0x08)
+			{
+				if (rxIndex > 0) rxIndex--;
+			}
+			else
+			{
+				BufferRX[rxIndex++] = RX_Data;
+			}
+
 		}
 		else{
 			BufferRX[rxIndex] = '\0';
