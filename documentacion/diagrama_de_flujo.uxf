@@ -83,7 +83,8 @@ bg=red</panel_attributes>
       <w>190</w>
       <h>120</h>
     </coordinates>
-    <panel_attributes>lt=&lt;.</panel_attributes>
+    <panel_attributes>ISR
+lt=&lt;.</panel_attributes>
     <additional_attributes>170.0;10.0;10.0;100.0</additional_attributes>
   </element>
   <element>
@@ -94,7 +95,8 @@ bg=red</panel_attributes>
       <w>200</w>
       <h>120</h>
     </coordinates>
-    <panel_attributes>lt=&lt;.</panel_attributes>
+    <panel_attributes>ISR
+lt=&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;180.0;100.0</additional_attributes>
   </element>
   <element>
@@ -212,5 +214,38 @@ bg=red</panel_attributes>
     </coordinates>
     <panel_attributes>lt=.&gt;</panel_attributes>
     <additional_attributes>170.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>540</x>
+      <y>460</y>
+      <w>220</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>Background</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>230</x>
+      <y>380</y>
+      <w>230</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>Foreground</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>850</x>
+      <y>380</y>
+      <w>230</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>Foreground</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
